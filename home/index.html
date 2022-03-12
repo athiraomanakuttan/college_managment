@@ -195,12 +195,12 @@
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
+          <!-- <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"> -->
+          <select name="menu_options" id="menu_options" class="form-control form-control-sidebar">
+            <option value="staff">Staff</option>
+            <option value="student">Student</option>
+          </select>
+          
         </div>
       </div>
 
@@ -1042,7 +1042,7 @@
             <!-- /.card -->
 
             <!-- Calendar -->
-            <div class="card bg-gradient-success">
+            <div class="card bg-gradient-primary">
               <div class="card-header border-0">
 
                 <h3 class="card-title">
@@ -1053,7 +1053,7 @@
                 <div class="card-tools">
                   <!-- button with a dropdown -->
                   <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                       <i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" role="menu">
@@ -1063,10 +1063,10 @@
                       <a href="#" class="dropdown-item">View calendar</a>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
