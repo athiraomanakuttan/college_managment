@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
  include '../sidebar/header.php'; 
+ include '../api/db/connection.php';
  ?>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -182,8 +183,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Template</li>
+              <li class="breadcrumb-item"><a href="../home/index.php">Home</a></li>
+              <li class="breadcrumb-item active">Acadamic year</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -193,7 +194,7 @@
 
     <!-- Main content -->
     <section class="content">
-       .
+       
     </section>
     <!-- /.content -->
   </div>

@@ -2,6 +2,8 @@
 <html lang="en">
 <?php
  include '../sidebar/header.php'; 
+ include '../api/db/connection.php'; 
+ if($connection){ echo("success");}
  ?>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

@@ -12646,6 +12646,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .nav-sidebar .nav-item > .nav-link {
   margin-bottom: .2rem;
+  margin-top: 10px !important;
 }
 
 .nav-sidebar .nav-item > .nav-link .right {
@@ -12693,6 +12694,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .nav-sidebar > .nav-item {
   margin-bottom: 0;
+  margin-top: 10px;
 }
 
 .nav-sidebar > .nav-item .nav-icon {
