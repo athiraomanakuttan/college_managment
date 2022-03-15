@@ -33,5 +33,29 @@ class class_db{
  return $ret; }
             
     }
+    public function insert($tablename,$columns,$values)
+    {
+        $connection = mysqli_connect("localhost","root","","college_db");
+        $ret = array('status' => FALSE, 'message' => 'Error while selecting data.');
+        if (!isset($tablename) || trim($tablename) == '') {
+            $ret['message'] = 'Invalid tablename.';
+            return $ret; }
+        if (!isset($columns) || trim($columns) == '') {
+            $ret['message'] = 'Invalid columns.';
+            return $ret; }
+        if (!isset($values) || trim($values) == '') {
+            $ret['message'] = 'Invalid column values.';
+            return $ret; }
+        $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
+        $res=mysqli_query($connection,$sql);
+        if($res){
+            $res = array('status' => TRUE, 'message' => 'Successfuly inserted data.');
+            return $res;   
+        }
+        else
+        { return $ret;}
+
+
+    }
 }
 ?>
