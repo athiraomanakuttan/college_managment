@@ -2,11 +2,12 @@
   <?php 
   include '../sidebar/header.php';
   ?>
+  <script src="college.js"></script>
   
 </head>
 
 <div class="container">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form" onclick="addnewcollege()">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form" >
     Registration
   </button>  
 </div>
@@ -20,11 +21,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" id="form">
+      <form  id="form">
         <div class="modal-body">
           <div class="form-group">
             <label for="college_name">College Name</label>
-            <input type="text" class="form-control" id="email1" name="college_name" aria-describedby="emailHelp" placeholder="Enter college Name">
+            <input type="text" class="form-control" id="college_name" name="college_name" aria-describedby="emailHelp" placeholder="Enter college Name">
             
           </div>
           <div class="form-group">
@@ -53,7 +54,7 @@
           
         </div>
         <div class="modal-footer border-top-0 d-flex justify-content-center">
-          <button type="submit" name="add" class="btn btn-primary">Submit</button>
+          <button type="button"  name="add" class="btn btn-primary" onclick="addcollege()" >Submit</button>
         </div>
       </form>
     </div>
@@ -61,45 +62,46 @@
 </div>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script type="text/javascript">
+  
 	// Validation
-	$(function() {
+	// $(function() {
 	
-		// Validation
-		$("#form").validate({
-            alert("hellooo");
+	// 	// Validation
+	// 	$("#form").validate({
+  //           alert("hellooo");
 
-			// Rules for form validation
-			rules : {
-				college_name: {
-					required : true
-				},
-				college_address : {
-					required : true
-				},
-                college_phone_no : {
-					required : true
-				},
-                college_email: {
-					required : true
-				},
-                college_pwd : {
-					required : true
-				},
-                college_con_pwd : {
-					required : true
-				},
-			},
+	// 		// Rules for form validation
+	// 		rules : {
+	// 			college_name: {
+	// 				required : true
+	// 			},
+	// 			college_address : {
+	// 				required : true
+	// 			},
+  //               college_phone_no : {
+	// 				required : true
+	// 			},
+  //               college_email: {
+	// 				required : true
+	// 			},
+  //               college_pwd : {
+	// 				required : true
+	// 			},
+  //               college_con_pwd : {
+	// 				required : true
+	// 			},
+	// 		},
 
-			// Messages for form validation
-			messages : {
-				college_name : {
-					required : 'College Name is required'
-				},
-				student_name : {
-					required : 'Student Name is required'
-				}
-			},
-		});
+	// 		// Messages for form validation
+	// 		messages : {
+	// 			college_name : {
+	// 				required : 'College Name is required'
+	// 			},
+	// 			student_name : {
+	// 				required : 'Student Name is required'
+	// 			}
+	// 		},
+	// 	});
 
-	});
+	// });
     </script>

@@ -47,6 +47,7 @@ class class_db{
             $ret['message'] = 'Invalid column values.';
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
+        echo($sql); die();
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly inserted data.');
