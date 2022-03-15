@@ -4,6 +4,8 @@
  include '../sidebar/header.php'; 
  include '../api/db/connection.php';
  ?>
+  <script src="acadamicyear.js"></script>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
