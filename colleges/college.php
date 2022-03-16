@@ -41,7 +41,7 @@
               <div class="col-6">
                 <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" id="email" name="College_email" placeholder="Enter Email">
+                <input type="email" class="form-control" id="college_email" name="college_email" placeholder="Enter Email">
               </div>  
             </div>
             <div class="col-6">
@@ -85,6 +85,7 @@
 </div>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script type="text/javascript">
+
   // Validation
   $(function() {
   

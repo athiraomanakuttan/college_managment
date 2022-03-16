@@ -34,7 +34,7 @@ class class_db{
             
     }
     public function insert($tablename,$columns,$values)
-    {
+    { 
         $connection = mysqli_connect("localhost","root","","college_db");
         $ret = array('status' => FALSE, 'message' => 'Error while selecting data.');
         if (!isset($tablename) || trim($tablename) == '') {
@@ -47,7 +47,6 @@ class class_db{
             $ret['message'] = 'Invalid column values.';
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
-        echo($sql); die();
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly inserted data.');
