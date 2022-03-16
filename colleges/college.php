@@ -3,6 +3,7 @@
   include '../sidebar/header.php';
   ?>
 <script src="college.js"></script>
+<script src="http://notifyjs.com/dist/notify-combined.min.js"></script>
 </head>
 
 <div class="container">
@@ -83,7 +84,10 @@
     </div>
   </div>
 </div>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<?php 
+  include '../sidebar/footer.php';
+  ?>
+ 
 <script type="text/javascript">
 
   // Validation

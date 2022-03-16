@@ -48,6 +48,7 @@ class class_db{
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
         $res=mysqli_query($connection,$sql);
+        $res['last_id'] = mysqli_insert_id($res);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly inserted data.');
             return $res;   

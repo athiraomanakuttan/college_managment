@@ -19,10 +19,12 @@ function addnewcollege() {
         success: function (result) {
             if(result.status)
             {
+                alert("success");
                 // $.notify(result.message, 'success');
             }
             else
-            {
+            {  
+                alert("not success");
                 // $.notify(result.message, 'error');
             }
             
