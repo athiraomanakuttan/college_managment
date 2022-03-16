@@ -177,7 +177,9 @@ transform: rotate(45deg);
             </div>
         </div>
    </body>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <?php
+   include '../sidebar/footer.php'
+   ?>
    <script type="text/javascript">
   // Validation
   $(function() {
