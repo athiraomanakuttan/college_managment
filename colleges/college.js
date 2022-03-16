@@ -1,7 +1,7 @@
 
-$(document).ready(function(){
-});
 function addnewcollege() {
+   
+
     $.ajax({
          
         url: "../api/process.php",
@@ -17,16 +17,11 @@ function addnewcollege() {
             }
         },
         success: function (result) {
-            if(result.status)
-            {
-                alert("success");
-                // $.notify(result.message, 'success');
-            }
-            else
-            {  
-                alert("not success");
-                // $.notify(result.message, 'error');
-            }
+
+            if (result) { alert("success"); }
+            else { alert("not success"); }
+
+
             
         }
 

@@ -14,6 +14,11 @@ switch ($action) {
             $ret = $college->addNewCollege($data);
             return $ret;
             break;
+        case 'userlogin':
+            $college = new class_userlogin();
+            $ret = $college->UserLogin($data);
+            return $ret;
+            break;
         default :
             echo("invalid action");
             die();    
