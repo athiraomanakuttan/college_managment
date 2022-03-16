@@ -22,8 +22,8 @@ class class_college
         $values="'".$data['collge_name']."','".$data['collge_address']."',".$data['college_phone_no'].",'".$data['college_email']."','".$data['college_pwd']."',1";
         ;$db=new class_db();
         $ret=$db->insert($this->__tablename,$columns,$values);
-        var_dump($ret);
-        return $ret;
+        var_dump($ret['status']);
+        return $ret['status'];
 
     }
 }

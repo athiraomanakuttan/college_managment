@@ -156,7 +156,7 @@ transform: rotate(45deg);
     <div class="login">
             <div class="account-login">
                <!-- <h1>Logins</h1> -->
-               <form action="" id="formValidate" class="login-form">
+               <form  id="formValidate" class="login-form">
                   <div class="form-group">
                      <input type="email" name="email" id="email" placeholder="Email" class="form-control" required>
                   </div>
@@ -171,13 +171,14 @@ transform: rotate(45deg);
                      <a href="#" class="pull-right">Forgot Password?</a>
                   </div>
                   <div class="error"><?php if (isset($login_error)){echo $login_error;}?></div>
-                  <button class="btn" name="login" id="login">Login</button>
+                  <button type="button"  class="btn" name="login" id="login" onclick="return userlogin()">Login</button>
                   <p>Are you new?<a href="#">Sign Up</a></p>
                </form>
             </div>
         </div>
    </body>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="login.js"></script>
    <script type="text/javascript">
   // Validation
   $(function() {
