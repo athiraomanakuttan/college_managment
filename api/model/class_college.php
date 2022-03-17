@@ -23,8 +23,20 @@ class class_college
         ;
         $db=new class_db();
         $ret=$db->insert($this->__tablename,$columns,$values);
+
         // var_dump($ret['status']);
+
+        $column_name='college_registration_id';
+        $where='college_registration_emailid="'.$data['college_email'].'"';
+        $rec = $db->getList($this->__tablename,$column_name,$where);
+    
+        $col_name='`college_registration_id`, `user_login_emailid`, `user_login_password`, `user_login_role_id`, `user_login_status`';
+        $val="'".$rec['data']['rows'][0]['college_registration_id']."','".$data['college_email']."','".$data['college_pwd']."',2,2";
+        $ret=$db->insert('user_login',$col_name,$val);
+        var_dump($ret['status']);
+
         return $ret['status'];
+
 
     }
 }
