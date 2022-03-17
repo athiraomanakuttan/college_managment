@@ -16,7 +16,7 @@ switch ($action) {
             break;
         case 'userlogin':
             $college = new class_userlogin();
-            $ret = $college->UserLogin($data);
+             $ret = $college->UserLogin($data); //print_r($ret);die;
             return $ret;
             break;
         default :

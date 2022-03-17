@@ -1,6 +1,6 @@
 <?php
 class class_db{
-    public function getList($tableNames,$columns,$where,$order_by){
+    public function getList($tableNames,$columns,$where=null,$order_by= null){
         $connection = mysqli_connect("localhost","root","","college_db");
         $ret = array('status' => FALSE, 'message' => 'Error while selecting data.');
         if (!isset($tableNames) || trim($tableNames) == '') {
@@ -10,7 +10,7 @@ class class_db{
             $ret['message'] = 'Invalid columns.';
             return $ret; }
         $sql='select '.$columns.' from '.$tableNames;
-        if(isset($tableNames) && $tableNames !='')
+        if(isset($where) && $where !='')
         { $sql=$sql.' WHERE '.$where; }    
         if(isset($order_by) && $order_by !='')
         { $sql=$sql.' ORDER BY  '.$order_by; } 
@@ -47,6 +47,7 @@ class class_db{
             $ret['message'] = 'Invalid column values.';
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
+        // echo($sql);
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly inserted data.');
