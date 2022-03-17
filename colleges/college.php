@@ -87,48 +87,5 @@
 <?php 
   include '../sidebar/footer.php';
   ?>
- 
-<script type="text/javascript">
-
-  // Validation
-  $(function() {
   
-    // Validation
-    $("#form").validate({
-            alert("hellooo");
-
-      // Rules for form validation
-      rules : {
-        college_name: {
-          required : true
-        },
-        college_address : {
-          required : true
-        },
-                college_phone_no : {
-          required : true
-        },
-                college_email: {
-          required : true
-        },
-                college_pwd : {
-          required : true
-        },
-                college_con_pwd : {
-          required : true
-        },
-      },
-
-      // Messages for form validation
-      messages : {
-        college_name : {
-          required : 'College Name is required'
-        },
-        student_name : {
-          required : 'Student Name is required'
-        }
-      },
-    });
-
-  });
-    </script>
+ 
