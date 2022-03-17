@@ -4,7 +4,8 @@ require_once( "db/connection.php");
 $UID=1;
 $CLGID=1;
 $data = $_REQUEST['datas'];
-// var_dump($data);
+var_dump("hi");
+var_dump($data);
 if(!$_POST['action'])
 {echo("no action"); die();}
 else{ $action=$_POST['action']; }
