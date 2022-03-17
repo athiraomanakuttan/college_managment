@@ -3,6 +3,7 @@
    <?php
    include '../sidebar/header.php'
    ?>
+<link rel="stylesheet" href="../sidebar/style.css">   
 <style type="text/css">
 * {
 margin: 0px;
@@ -185,7 +186,7 @@ transform: rotate(45deg);
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="login.js"></script>
 
-   <script type="text/javascript">
+   <!-- <script type="text/javascript">
   // Validation
   $(function() {
     // var id = $('#id').val();
@@ -216,5 +217,5 @@ transform: rotate(45deg);
     });
 
   });
-</script>
+</script> -->
 </html>
