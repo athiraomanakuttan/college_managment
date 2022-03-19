@@ -1,6 +1,7 @@
 <head>
   <?php 
   include '../sidebar/header.php';
+  include '../sidebar/footer.php';
   ?>
 <script src="college.js"></script>
 <script src="http://notifyjs.com/dist/notify-combined.min.js"></script>

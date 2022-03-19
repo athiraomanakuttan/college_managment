@@ -39,5 +39,15 @@ class class_college
 
 
     }
+    public function GetCollegeDetails($UID,$CLGID)
+    {
+    $ret=array('status'=>FALSE,'message'=>'error while fetching data');
+    $column_name='`college_registration_name`,`college_registration_phone_number`,`college_registration_emailid`';
+    $where='college_registration_id='.$UID;
+    $db = new class_db();
+    $ret = $db->getList($this->__tablename,$column_name,$where);
+    echo json_encode($ret);
+    return $ret;
+    }
 }
 ?>

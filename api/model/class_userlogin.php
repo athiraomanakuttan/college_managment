@@ -26,6 +26,7 @@ class class_userlogin
         $rek=$loginlog->AddLoginLog();   
     }
     echo json_encode($ret);
+    // echo($ret);
         return $ret;
     }
     else

@@ -1,7 +1,7 @@
 
 function addnewcollege() {
  
-    var validate=validation();
+    // var validate=validation();
 
     $.ajax({
          
@@ -9,7 +9,7 @@ function addnewcollege() {
         method: "post",
         data: {
             "action": "addCollege",
-            "datas": {
+            "data": {
                 collge_name: $('#college_name').val(),
                 collge_address: $('#college_address').val(),
                 college_phone_no: $('#college_phone_no').val(),
@@ -18,9 +18,10 @@ function addnewcollege() {
             }
         },
         success: function (result) {
+            alert(result);
 
-            if (result) { alert("success"); }
-            else { alert("not success"); }
+            if (result) { alert("New college added successfully"); }
+            else { alert("some error occured"); }
 
 
             
