@@ -172,7 +172,7 @@ transform: rotate(45deg);
                      <a href="#" class="pull-right">Forgot Password?</a>
                   </div>
                   <div class="error"><?php if (isset($login_error)){echo $login_error;}?></div>
-                  <button type="button"  class="btn" name="login" id="login" onclick="return userlogin()">Login</button>
+                  <button type="button"  class="btn" name="login" id="login" onclick="userlogin()">Login</button>
                   <p>Are you new?<a href="#">Sign Up</a></p>
                </form>
             </div>

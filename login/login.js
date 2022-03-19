@@ -64,8 +64,12 @@ function userlogin() {
                 }
                 if (rollid==2)
                 {
-                    window.location('../home');
+                    // window.location('../home/index.php');
+                    window.location.href = '../home/index.php';
                 }
+            }
+            else{
+                alert("Invalid Login Credentials");
             }
             
         });
