@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
  include '../sidebar/header.php'; 
+ include '../sidebar/footer.php'; 
  include '../api/db/connection.php';
  ?>
   <script src="acadamicyear.js"></script>
