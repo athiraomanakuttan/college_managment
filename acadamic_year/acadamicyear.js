@@ -8,8 +8,9 @@ getacadamicyear();
             data: { 'action': 'GetAcadamicYear' },
             dataType: "json",
             encode: true,
-        }).done(function (data) { 
-            ;
+        }).done(function (datas) { 
+            var output = datas.data.rows;
+            console.log(output);
         });
 }
 function AddAcadamicYear()

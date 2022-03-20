@@ -38,7 +38,7 @@ class class_acadamicyear
     return $ret;
     }
     $column_name='`college_registration_id`,`user_login_id`,`acadamic_year_name`,`acadamic_year_desc`,`acadamic_year_start_date`,`acadamic_year_end_date`,`acadamic_year_status`';
-    $values=$CLGID.','.$UID.',"'.$data['acadamic_name'].'","'.$data['acadamic_desc'].'",'.$data['acadamic_start_date'].','.$data['acadamic_end_date'].','.$data['acadamic_status'];
+    $values=$CLGID.','.$UID.',"'.$data['acadamic_name'].'","'.$data['acadamic_desc'].'","'.$data['acadamic_start_date'].'","'.$data['acadamic_end_date'].'",'.$data['acadamic_status'];
     $db=new class_db();
     $ret=$db->insert($this->__tablename,$column_name,$values);
     echo json_encode($ret);
