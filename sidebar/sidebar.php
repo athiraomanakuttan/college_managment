@@ -161,7 +161,7 @@
           <img src="../home/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo($_SESSION['UID']); ?></a>
+          <a href="#" class="d-block" id="profile_college"></a>
         </div>
       </div>
 
@@ -470,7 +470,7 @@
     </div>
   </footer>
 
-  <!-- Control Sidebar -->
+  <script src="../home/index.js"></script>
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>

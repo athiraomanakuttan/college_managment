@@ -6,7 +6,7 @@ function addnewcollege() {
     $.ajax({
          
         url: "../api/process.php",
-        method: "post",
+        method: "POST",
         data: {
             "action": "addCollege",
             "data": {

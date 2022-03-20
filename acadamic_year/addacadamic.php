@@ -5,7 +5,7 @@
   include '../sidebar/footer.php';
   
   ?>
-<script src="college.js"></script>
+<script src="acadamicyear.js"></script>
 <script src="http://notifyjs.com/dist/notify-combined.min.js"></script>
 </head>
 
@@ -19,7 +19,7 @@
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
-        <h5 class="modal-title" id="exampleModalLabel" >Create Account</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >Acadamic Year</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -29,14 +29,14 @@
           <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                 <label for="college_name">College Name</label>
-                 <input type="text" class="form-control" id="college_name" name="college_name" aria-describedby="emailHelp" placeholder="Enter college Name">
+                 <label for="college_name">Name</label>
+                 <input type="text" class="form-control" id="acadamic_name" name="acadamic_name" aria-describedby="emailHelp" placeholder="Acadamic year Name">
                </div>  
             </div>
             <div class="col-6">
              <div class="form-group">
-             <label for="phone_no">Phone Number</label>
-             <input type="Number" class="form-control" id="college_phone_no" name="college_phone_no" placeholder="Enter Phone no">
+             <label for="phone_no">Discription</label>
+             <input type="text" class="form-control" id="acadamic_desc" name="acadamic_desc" placeholder="Acadamic year discription">
           
            </div>
             </div>
@@ -44,38 +44,34 @@
           <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="college_email" name="college_email" placeholder="Enter Email">
+                <label for="Email">From</label>
+                <input type="date" class="form-control" id="acadamic_start_date" name="acadamic_start_date" >
               </div>  
             </div>
             <div class="col-6">
             <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="college_pwd" name="college_pwd" placeholder="Enter Password">
+            <label for="password">To</label>
+            <input type="date" class="form-control" id="acadamic_end_date" name="acadamic_end_date" >
+           </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+            <div class="">
+                <input type="checkbox" class="" id="active_acadamic_year">
+                <label class="form-check-label" for="active_acadamic_year">Active</label>
            </div>
           </div>
         </div>
           <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" id="college_con_pwd" name="college_con_pwd" placeholder="Enter confirm Password">
-               </div>  
-            </div>
-            <div class="col-6">
-            <div class="form-group">
-            <label for="Address">Address</label>
-            <textarea class="form-control" name="college_address" placeholder="Enter Address" id="college_address" style="height: 40px;"></textarea>
             
-          </div>
-          </div>
           <div class="form-actions">
                       <div class="row">
                         <div class="col-md-12" style="margin-left: 340px;" >
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <button class="btn btn-success" name="add" type="button" value="add" onclick="addnewcollege()">
+                          <button class="btn btn-success" name="add" type="button" value="add" onclick="AddAcadamicYear()">
                             Submit
                           </button>
                         
