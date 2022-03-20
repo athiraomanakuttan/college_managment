@@ -285,60 +285,19 @@ table.dataTable td {
 <div class="container-fluid">  
   <div class="row">  
     <div class="col-12">  
-      <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive">  
+      <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" id='ay_tab'>  
         <thead>  
           <tr>  
-            <th data-class="expand"> State </th>  
-            <th data-class="expand"> Languages </th>  
-            <th data-class="expand"> Population </th>  
-            <th data-class="expand"> Median Age </th>  
-            <th data-class="expand"> Area (Km?)</th>  
+            <th data-class="expand"> AY NAME </th>  
+            <th data-class="expand"> AY DESC </th>  
+            <th data-class="expand">  FROM </th>  
+            <th data-class="expand">  TO </th>  
+            <th data-class="expand"> AY ID</th>  
+            <th data-class="expand"> D</th>  
+            <th data-class="expand"> S</th>  
+            <th data-class="expand"> M</th>  
           </tr>  
-        </thead>  
-        <tbody>  
-          <tr>  
-            <td> Andhra Pradesh </td>  
-            <td> English, Hindi </td>  
-            <td> 41,803,125</td>  
-            <td> 31.3 </td>  
-            <td> 2,780,387 </td>  
-          </tr>  
-          <tr>  
-            <td> Himachal Pradesh </td>  
-            <td> English 79%, native and other languages </td>  
-            <td> 23,630,169 </td>  
-            <td> 37.3 </td>  
-            <td> 7,739,983 </td>  
-          </tr>  
-          <tr>  
-            <td> Gwalier </td>  
-            <td> Hindi </td>  
-            <td> 11,128,40 </td>  
-            <td> 43.2 </td>  
-            <td> 131,956 </td>  
-          </tr>  
-          <tr>  
-            <td> Ludhiana </td>  
-            <td> Panjabi </td>  
-              <td> 23,630,169 </td>  
-            <td> 37.3 </td>  
-            <td> 7,739,983 </td>  
-          </tr>  
-          <tr>  
-            <td> Goa </td>  
-            <td> native </td>  
-           <td> 41,803,125</td>  
-            <td> 31.3 </td>  
-            <td> 2,780,387 </td>  
-          </tr>  
-          <tr>  
-            <td> Mumbai </td>  
-            <td> Native </td>  
-           <td> 23,630,169 </td>  
-            <td> 37.3 </td>  
-            <td> 7,739,983 </td>  
-          </tr>  
-        </tbody>  
+        </thead>
         <tfoot>  
           
      </tfoot>  

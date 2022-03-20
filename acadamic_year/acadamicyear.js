@@ -1,4 +1,5 @@
 getacadamicyear();
+
     function getacadamicyear() {
     
         $.ajax({
@@ -7,8 +8,8 @@ getacadamicyear();
             data: { 'action': 'GetAcadamicYear' },
             dataType: "json",
             encode: true,
-        }).done(function (data) {
-            console.log(data.status);
+        }).done(function (data) { 
+            ;
         });
 }
 function AddAcadamicYear()
