@@ -18,6 +18,7 @@ switch ($action) {
         case 'getcollegedata':
             $acadamic = new class_college();
             $ret = $acadamic->GetCollegeDetails($UID,$CLGID);
+            
             return $ret;
             break;
         default :

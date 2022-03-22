@@ -11,16 +11,56 @@ class class_acadamicyear
        $ret = array('status' => FALSE, 'message' => 'Inalid user id or colege id');
        return $ret;
      } 
-     $column_name='`acadamic_year_id`,`acadamic_year_name`,`acadamic_year_start_date`,
+     $column_name='`acadamic_year_id`,`acadamic_year_name`,`acadamic_year_desc`,`acadamic_year_start_date`,
                   `acadamic_year_end_date`,`college_registration_id`,`user_login_id`,
                   `acadamic_year_timestamp`,`acadamic_year_status`';
-     $where='college_registration_id ='.$CLGID.' and user_login_id='.$UID;
+     $where='college_registration_id ='.$CLGID.' and user_login_id='.$UID.' and acadamic_year_status in(0,1,2)';
      $order_by='acadamic_year_id';
      $db = new class_db();
      $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
+     if($ret['status'])
+     {
+       
+       $displaydata=$ret['data']['rows'];
+       $displaycount=$ret['data']['count'];
+      $ret=$this->display_list($displaydata,$displaycount);
+     }
      echo json_encode($ret);
      return $ret;
   }
+      public function display_list($data,$count)
+    {
+        $ret=array('status'=>FALSE,'message'=>'error while display data');
+        if($data=='' || $count=='')
+        {
+            return $ret;
+        }
+        $output='';
+        for($i=0; $i<$count; $i++)
+        {
+            if($data[$i]['acadamic_year_status']==1)
+            {
+                $status='<a id ="enable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="disableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
+            }
+            elseif($data[$i]['acadamic_year_status']==0)
+            {
+                $status='<a id ="disable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="enableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
+            }
+            
+            $output=$output.'<tr>  
+            <th data-class="expand">'.$data[$i]['acadamic_year_name'].' </th>  
+            <th data-class="expand">'.$data[$i]['acadamic_year_desc'].'</th>  
+            <th data-class="expand">'.$data[$i]['acadamic_year_start_date'].'</th>  
+            <th data-class="expand">'.$data[$i]['acadamic_year_end_date'].'</th>  
+            <th data-class="expand">'.$data[$i]['acadamic_year_id'].'</th>  
+            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
+            <th data-class="expand">'.$status.'</th>  
+            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+          </tr> ';
+        }
+        $ret=array('status'=>TRUE,'data'=>$output);
+        return  $ret;
+    }
   
 
   public function AddAcadamicYear($UID,$CLGID,$data)

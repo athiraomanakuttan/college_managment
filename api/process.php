@@ -1,8 +1,9 @@
 <?php
 require_once( "model/models.php");
 require_once( "db/connection.php");
+if($_POST['action']!='userlogin'){
 $UID=$_SESSION['UID'];
-$CLGID=$_SESSION['CLGID'];
+$CLGID=$_SESSION['CLGID']; }
 $data = $_REQUEST['data'];
 if(!$_POST['action'])
 {echo("no action"); die();}

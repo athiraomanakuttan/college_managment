@@ -283,7 +283,7 @@ table.dataTable td {
   
   
 <div class="container-fluid"> 
-  <h3>Acadamic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <h3>Departments <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getdepartments()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
@@ -313,7 +313,7 @@ table.dataTable td {
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
-        <h5 class="modal-title" id="exampleModalLabel" >Acadamic Year</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >Add Department</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
