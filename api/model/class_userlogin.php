@@ -25,12 +25,14 @@ class class_userlogin
         $loginlog= new class_loginlog();
         $rek=$loginlog->AddLoginLog();   
     }
+    echo json_encode($ret);
         return $ret;
     }
     else
     {
-        var_dump("not");
+        // var_dump("not");
         $ret=array('status' => FALSE, 'message' => 'Not a registred user');
+        echo json_encode($ret);
         return $ret;
     }
       

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     getacadamicyear();
     function getacadamicyear() {
         
@@ -15,5 +15,3 @@ $(document).ready(function(){
                 })
 
 }
-
-});

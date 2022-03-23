@@ -2,6 +2,17 @@
 <html lang="en">
 <?php
  include 'sidebar/header.php'; 
+ if(isset($_SESSION['UID'])|| isset($_SESSION['CLGID']))
+ {
+   echo($_SESSION['UID']);
+  $UID=$_SESSION['UID'];
+  $CLGID=$_SESSION['CLGID'];
+ }
+ else
+ {
+   echo("Access Denied.");
+ }
+ 
  ?>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -165,7 +176,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo($UID);  ?></a>
         </div>
       </div>
 
@@ -596,7 +607,5 @@
   </aside>
 </div>
 </body>
-<script>
-  
-</script>
+<script src="index.js"></script>
 </html>

@@ -5,28 +5,75 @@ function userlogin() {
     }
     else{
        
-    $.ajax({
+    // $.ajax({
 
-        url: "../api/process.php",
-        // dataType: "JSON",
-        method: "post",
-        data: { "action": "userlogin","datas": { login_email: $('#email').val(),login_password: $('#password').val()}},
-        success: function (data) {
-            var type = typeof data;
-            console.log(type);
-            console.log(data); return;
-            if (data instanceof Array)
+    //     url: "../api/process.php",
+    //     type: "POST",
+    //     data: { "action": "userlogin","datas": { login_email: $('#email').val(),login_password: $('#password').val()}},
+    //     success: function (data) {
+    //         var type = typeof data;
+    //         console.log(type);
+    //         console.log(data); return;
+    //         if (data instanceof Array)
+    //         {
+    //             alert("inside");
+    //         } 
+    //         else{
+    //             alert("outside");
+    //         }           
+    //     }
+    // })
+
+        // $.ajax({
+        //     url: "../api/process.php",
+        //     cache: false,
+        //     data: { "action": "userlogin", "datas": { login_email: $('#email').val(), login_password: $('#password').val() } },
+        //     type: 'POST',
+        //     dataType: "json",
+        //     encode: true,
+        //     error: function () {
+        //         console.log("Request Failed");
+        //     },
+        //     success: function (data) {
+        //         console.log('here');
+        //         console.log(data);
+        //     },
+        //     complete: function () {
+        //         console.log("Request finished.");
+        //     }
+        // });
+        var formData = {
+            "action": "userlogin",
+            "data":{
+            login_email: $('#email').val(),
+            login_password: $('#password').val() }
+        };
+        $.ajax({
+            type: "POST",
+            url: "../api/process.php",
+            data: formData,
+            dataType: "json",
+            encode: true,
+        }).done(function (data) {
+            if(data.status)
             {
-                alert("inside");
-            } 
+                var output = [];
+                var output = data.data.rows;
+                for (var i = 0; i < 1; i++) {
+                    var rollid = output[i].user_login_role_id;
+                }
+                if (rollid==2)
+                {
+                    // window.location('../home/index.php');
+                    window.location.href = '../home/index.php';
+                }
+            }
             else{
-                alert("outside");
-            }           
-        }
-
-
-
-    })
+                alert("Invalid Login Credentials");
+            }
+            
+        });
+    
 
     }
 }
