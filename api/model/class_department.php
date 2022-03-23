@@ -96,12 +96,11 @@ class class_department
             echo json_encode($ret);
             return $ret;
         }
-        elseif($data['department_id']=='' || $data['department_status'])
+        elseif($data['department_id']=='' || $data['department_status']=='')
         {
             echo json_encode($ret);
             return $ret;
         }
-        var_dump($data); di
         $column_name='department_status';
         $values=$data['department_status'];
         $where='department_id='.$data['department_id'];

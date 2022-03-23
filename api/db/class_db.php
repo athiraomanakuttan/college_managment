@@ -66,7 +66,6 @@ class class_db{
     }
     public function update($tablename,$columns,$values,$where)
     {
-        var_dump($tablename); die();
         $connection = mysqli_connect("localhost","root","","college_db");
         $ret = array('status' => FALSE, 'message' => 'Error while selecting data.');
         if($tablename=='' || $columns=='' || $values=='' || $where=='')
