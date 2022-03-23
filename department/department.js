@@ -35,14 +35,100 @@ function AddDepartment() {
             success: function (result) {
                 if (result.status) {
                     alert("acadamic year added succesfully");
-
                 }
                 else {
                     alert(result.message);
                 }
             }
         });
-        getacadamicyear();
+        getdepartments();
+    }
+}
+function disabledepartment(department_id)
+{
+    if(department_id=='')
+    {
+        alert("some error occured"); return;
+    }
+    else
+    {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusDepartment',
+                'data': {
+                    department_id: department_id,
+                    department_status: 0
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully disabled department");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getdepartments();
+    }
+}
+function enabledepartment(department_id) {
+    if (department_id == '') {
+        alert("some error occured"); return;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusDepartment',
+                'data': {
+                    department_id: department_id,
+                    department_status: 1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully enabled department");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getdepartments();
+    }
+}
+function deletedepartment(department_id) {
+    if (department_id == '') {
+        alert("some error occured"); return;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusDepartment',
+                'data': {
+                    department_id: department_id,
+                    department_status: -1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully deleted department");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getdepartments();
     }
 }
 function validationdepartment() {
