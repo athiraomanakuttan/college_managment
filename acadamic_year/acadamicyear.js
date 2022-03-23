@@ -105,3 +105,23 @@ function validationacadamic()
     return true; 
 
 }
+function deleteAcadamicyr() {
+    $('.hi').append('athira');
+       $.ajax({
+           type: "POST",
+           url: "../api/process.php",
+           data: { 'action': 'DeleteAcadamicYear' },
+           dataType: "json",
+           encode: true,
+       }).done(function (datas) {
+           if(datas.status)
+           {
+               $(document).ready(function(){
+               $('#table_body').html(datas.data);
+               });
+               
+           }
+           else
+           {  }
+       });
+}

@@ -84,5 +84,10 @@ class class_acadamicyear
     echo json_encode($ret);
     return $ret;
   }
+  public function DeleteAcademic($UID,$CLGID,$data)
+  {
+    $db = new class_db();
+    $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
+  }
 }
 ?>
