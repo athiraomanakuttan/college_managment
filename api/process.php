@@ -24,6 +24,11 @@ switch ($action) {
              $ret = $acadamic->AddAcadamicYear($UID,$CLGID,$data);
              return true;
             break;
+        case 'AddDepartment':
+            $department = new class_department();
+             $ret = $department->AddDepartment($UID,$CLGID,$data);
+             return true;
+            break;
         default :
             echo("invalid action");
             die();    
