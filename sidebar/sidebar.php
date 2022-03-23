@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -160,7 +161,7 @@
           <img src="../home/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block" id="profile_college"></a>
         </div>
       </div>
 
@@ -224,6 +225,12 @@
                 <a href="../acadamic_year/acadamicyear.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Acadamic year</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../department/department.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Departments </p>
                 </a>
               </li>
               <li class="nav-item">
@@ -469,7 +476,7 @@
     </div>
   </footer>
 
-  <!-- Control Sidebar -->
+  <script src="../home/index.js"></script>
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>

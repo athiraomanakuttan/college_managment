@@ -1,8 +1,8 @@
 <?php
 require_once( "model/models.php");
 require_once( "db/connection.php");
-$UID=1;
-$CLGID=1;
+$UID=$_SESSION['UID'];
+$CLGID=$_SESSION['CLGID'];
 if(!$_POST['action'])
 {echo("no action"); die();}
 else{ $action=$_POST['action']; }
@@ -13,6 +13,16 @@ switch ($action) {
             $acadamic = new class_acadamicyear();
             $ret = $acadamic->GetAcadamicYearList($UID,$CLGID);
             // var_dump($ret);
+            return $ret;
+            break;
+        case 'getcollegedata':
+            $acadamic = new class_college();
+            $ret = $acadamic->GetCollegeDetails($UID,$CLGID);
+            return $ret;
+            break;
+        case 'GetDepartment':
+            $department = new class_department();
+            $ret = $department->GetDepartmentDetails($UID,$CLGID);
             return $ret;
             break;
         default :

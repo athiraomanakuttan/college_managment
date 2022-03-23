@@ -1,8 +1,9 @@
 <?php
 require_once( "model/models.php");
 require_once( "db/connection.php");
-$UID=1;
-$CLGID=1;
+if($_POST['action']!='userlogin'){
+$UID=$_SESSION['UID'];
+$CLGID=$_SESSION['CLGID']; }
 $data = $_REQUEST['data'];
 if(!$_POST['action'])
 {echo("no action"); die();}
@@ -14,8 +15,18 @@ switch ($action) {
             //return $ret;
             break;
         case 'userlogin':
-            $college = new class_userlogin();
-             $ret = $college->UserLogin($data); //print_r($ret);die;
+            $user = new class_userlogin();
+             $ret = $user->UserLogin($data); 
+             return true;
+            break;
+        case 'AddAcadamicYear':
+            $acadamic = new class_acadamicyear();
+             $ret = $acadamic->AddAcadamicYear($UID,$CLGID,$data);
+             return true;
+            break;
+        case 'AddDepartment':
+            $department = new class_department();
+             $ret = $department->AddDepartment($UID,$CLGID,$data);
              return true;
             break;
         default :

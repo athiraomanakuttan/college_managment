@@ -1,18 +1,12 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
  include 'sidebar/header.php'; 
- if(isset($_SESSION['UID'])|| isset($_SESSION['CLGID']))
- {
-   echo($_SESSION['UID']);
-  $UID=$_SESSION['UID'];
-  $CLGID=$_SESSION['CLGID'];
- }
- else
- {
-   echo("Access Denied.");
- }
- 
+ include 'sidebar/footer.php'; 
+//  session_start();
  ?>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -30,7 +24,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -176,7 +170,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo($UID);  ?></a>
+          <a href="#" class="d-block"><?php echo($_SESSION['UID']); ?></a>
         </div>
       </div>
 
@@ -607,5 +601,5 @@
   </aside>
 </div>
 </body>
-<script src="index.js"></script>
+<script src='index.js'></script>
 </html>

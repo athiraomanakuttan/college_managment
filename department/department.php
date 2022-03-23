@@ -5,7 +5,7 @@
  include '../sidebar/footer.php'; 
  include '../api/db/connection.php';
  ?>
-  <script src="acadamicyear.js"></script>
+  <script src="department.js"></script>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>  
@@ -283,7 +283,7 @@ table.dataTable td {
   
   
 <div class="container-fluid"> 
-  <h3>Acadamic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <h3>Departments <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getdepartments()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
@@ -313,7 +313,7 @@ table.dataTable td {
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
-        <h5 class="modal-title" id="exampleModalLabel" >Acadamic Year</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >A</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -321,42 +321,39 @@ table.dataTable td {
       <form method="post" id="form">
       <div class="modal-body">
           <div class="row">
-              <div class="col-6">
+              <div class="col-12">
                 <div class="form-group">
-                 <label for="college_name">Name</label>
-                 <input type="text" class="form-control" id="acadamic_name" name="acadamic_name" aria-describedby="emailHelp" placeholder="Acadamic year Name">
+                 <label for="college_name">Department Name</label>
+                 <input type="text" class="form-control" id="department_name" name="department_name" aria-describedby="emailHelp" placeholder="Department Name">
                </div>  
             </div>
-            <div class="col-6">
-             <div class="form-group">
-             <label for="phone_no">Discription</label>
-             <input type="text" class="form-control" id="acadamic_desc" name="acadamic_desc" placeholder="Acadamic year discription">
-          
-           </div>
-            </div>
           </div>
-          <div class="row">
-              <div class="col-6">
+            <div class="row">
+              <div class="col-12">
                 <div class="form-group">
-                <label for="Email">From</label>
-                <input type="date" class="form-control" id="acadamic_start_date" name="acadamic_start_date" >
-              </div>  
+                 <label for="college_name"> Nature</label>
+                 <select name="department_nature" id="department_nature"  class="form-control">
+                     <option value="0" selected disabled>Department Nature</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
+               </div>  
             </div>
-            <div class="col-6">
-            <div class="form-group">
-            <label for="password">To</label>
-            <input type="date" class="form-control" id="acadamic_end_date" name="acadamic_end_date" >
-           </div>
+          </div> 
+           <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                 <label for="college_name">Type</label>
+                 <select name="department_type" id="department_type"  class="form-control">
+                     <option value="0" selected disabled>Department Type</option>
+                     <option value="1">Teaching </option>
+                     <option value="2">Non Teaching</option>
+                 </select>
+                 </div>  
+            </div>
           </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-            <div class="">
-                <input type="checkbox" class="" id="active_acadamic_year">
-                <label class="form-check-label" for="active_acadamic_year">Active</label>
-           </div>
-          </div>
-        </div>
+
           <div class="row">
             
           <div class="form-actions">
@@ -365,7 +362,7 @@ table.dataTable td {
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <button class="btn btn-success" name="add" type="button" value="add" onclick="AddAcadamicYear()">
+                          <button class="btn btn-success" name="add" type="button" value="add" onclick="AddDepartment()">
                             Submit
                           </button>
                         

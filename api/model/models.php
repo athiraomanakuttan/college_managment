@@ -7,6 +7,5 @@ require_once('class_acadamicyear.php');
 require_once('class_college.php');
 require_once('class_userlogin.php');
 require_once('class_loginlog.php');
-
-
+require_once('class_department.php');
 ?>
