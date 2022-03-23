@@ -40,11 +40,11 @@ class class_acadamicyear
         {
             if($data[$i]['acadamic_year_status']==1)
             {
-                $status='<a id ="enable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="disableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
+                $status='<a id ="enable_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="disableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
             }
             elseif($data[$i]['acadamic_year_status']==0)
             {
-                $status='<a id ="disable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="enableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
+                $status='<a id ="disable_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="enableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
             }
             
             $output=$output.'<tr>  
@@ -53,9 +53,9 @@ class class_acadamicyear
             <th data-class="expand">'.$data[$i]['acadamic_year_start_date'].'</th>  
             <th data-class="expand">'.$data[$i]['acadamic_year_end_date'].'</th>  
             <th data-class="expand">'.$data[$i]['acadamic_year_id'].'</th>  
-            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
+            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
             <th data-class="expand">'.$status.'</th>  
-            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
           </tr> ';
         }
         $ret=array('status'=>TRUE,'data'=>$output);

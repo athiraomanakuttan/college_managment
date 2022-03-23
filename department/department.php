@@ -289,11 +289,9 @@ table.dataTable td {
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
         <thead class="bg-primary">  
           <tr>  
-            <th data-class="expand"> AY NAME </th>  
-            <th data-class="expand"> AY DESC </th>  
-            <th data-class="expand">  FROM </th>  
-            <th data-class="expand">  TO </th>  
-            <th data-class="expand"> AY ID</th>  
+            <th data-class="expand">NAME </th>  
+            <th data-class="expand">NATURE</th>  
+            <th data-class="expand">TYPE</th> 
             <th data-class="expand"> D</th>  
             <th data-class="expand"> S</th>  
             <th data-class="expand"> M</th>  

@@ -68,28 +68,48 @@ class class_department
                 $type='Non Teaching';
             }
 
-            if($data[$i]['department_nature']==1)
+            if($data[$i]['department_status']==1)
             {
-                $status='<a id ="enable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="disableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
+                $status='<a id ="enable_department'.$data[$i]['department_id'].'" onclick="disabledepartment('.$data[$i]['department_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
             }
-            elseif($data[$i]['department_nature']==0)
+            elseif($data[$i]['department_status']==0)
             {
-                $status='<a id ="disable_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="enableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
+                $status='<a id ="disable_department'.$data[$i]['department_id'].'" onclick="enabledepartment('.$data[$i]['department_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
             }
             
             $output=$output.'<tr>  
-            <th data-class="expand">'.$data[$i]['acadamic_year_name'].' </th>  
-            <th data-class="expand">'.$data[$i]['acadamic_year_desc'].'</th>  
-            <th data-class="expand">'.$data[$i]['acadamic_year_start_date'].'</th>  
-            <th data-class="expand">'.$data[$i]['acadamic_year_end_date'].'</th>  
-            <th data-class="expand">'.$data[$i]['acadamic_year_id'].'</th>  
-            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
+            <th data-class="expand">'.$data[$i]['department_name'].' </th>  
+            <th data-class="expand">'.$nature.'</th>  
+            <th data-class="expand">'.$type.'</th>   
+            <th data-class="expand"><a id ="dele_department'.$data[$i]['department_id'].'" onclick="deletedepartment('.$data[$i]['department_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
             <th data-class="expand">'.$status.'</th>  
-            <th data-class="expand"><a id ="dele_sender_id_'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+            <th data-class="expand"><a id ="dele_department'.$data[$i]['department_id'].'" onclick="editdepartment('.$data[$i]['department_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
           </tr> ';
         }
         $ret=array('status'=>TRUE,'data'=>$output);
         return  $ret;
+    }
+    function changeStatus($UID,$data)
+    {
+        $ret=array('status'=>FALSE,'message'=>'error while updating status');
+        if($UID=='' || $data==''){
+            echo json_encode($ret);
+            return $ret;
+        }
+        elseif($data['department_id']=='' || $data['department_status'])
+        {
+            echo json_encode($ret);
+            return $ret;
+        }
+        var_dump($data); di
+        $column_name='department_status';
+        $values=$data['department_status'];
+        $where='department_id='.$data['department_id'];
+        $db= new class_db();
+        $ret=$db->update($this->__tablename,$column_name,$values,$where);
+        echo json_encode($ret);
+        return $ret;
+
     }
 }
 ?>
