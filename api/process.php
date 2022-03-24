@@ -17,22 +17,22 @@ switch ($action) {
         case 'userlogin':
             $user = new class_userlogin();
              $ret = $user->UserLogin($data); 
-             return true;
+             return $ret;
             break;
         case 'AddAcadamicYear':
             $acadamic = new class_acadamicyear();
              $ret = $acadamic->AddAcadamicYear($UID,$CLGID,$data);
-             return true;
+             return $ret;
             break;
         case 'AddDepartment':
             $department = new class_department();
              $ret = $department->AddDepartment($UID,$CLGID,$data);
-             return true;
+             return $ret;
             break;
         case 'ChangestatusDepartment':
             $department = new class_department();
              $ret = $department->changeStatus($UID,$data);
-             return true;
+             return $ret;
             break;
         default :
             echo("invalid action");
