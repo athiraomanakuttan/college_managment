@@ -35,7 +35,7 @@
             </div>
             <div class="col-6">
              <div class="form-group">
-             <label for="phone_no">Discription</label>
+             <label for="phone_no">Description</label>
              <input type="text" class="form-control" id="acadamic_desc" name="acadamic_desc" placeholder="Acadamic year discription">
           
            </div>

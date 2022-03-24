@@ -1,40 +1,4 @@
 getacadamicyear();
-///////////////
-// ay_tab = $('#ay_tab').DataTable({
-//     "datSrc": "data",
-//     "columnDefs": [
-//         { "orderable": false, "targets": [-1, -2] },
-//         { "width": "20px", "targets": [-1, -2] }
-//     ],
-//     "columns": [
-//         { "data":"acadamic_year_name" }
-//         // { "data": "indtsp" },
-//         // { "data": "indid" },
-//         // {
-//         //     "data": null,
-//         //     "render": function (obj) {
-//         //         return '<a id ="dele_sender_id_' + obj.indid + '" onclick="deleteIndustry(' + obj.indid + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>'
-//         //     }
-
-//         // },
-//         // {
-//         //     "data": null,
-//         //     "render": function (obj) {
-//         //         if (obj.indstat == 2)
-//         //             return '<a id ="disable_sender_id_' + obj.indid + '" onclick="enableindustry(' + obj.indid + ')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
-//         //         else if (obj.indstat == 1)
-//         //             return '<a id ="enable_sender_id_' + obj.indid + '" onclick="disableindustry(' + obj.indid + ')"><i class="fa fa-toggle-on" aria-hidden="true"></i></a>';
-//         //         else if (obj.indstat == 6)
-//         //             return '<a id ="not_approved_sender_id_' + obj.indid + '"></i><i class="fa fa-pause" aria-hidden="true"></i></a>';
-//         //         else if (obj.indstat == 7)
-//         //             return '<a id ="rejected_sender_id_' + obj.indid + '"><i class="fa fa-ban" aria-hidden="true"></i></a>';
-//         //     }
-//         // }
-//     ]
-
-
-// });
-////////////////// 
     function getacadamicyear() {
      $('.hi').append('athira');
         $.ajax({
@@ -103,5 +67,83 @@ function validationacadamic()
     { alert('Fill all required fields');
         return false; }
     return true; 
+
+}
+function deleteAcadamicyr(acadamic_year_id) {
+       $.ajax({
+           type: "POST",
+           url: "../api/process.php",
+           dataType: "json",
+           data: { 'action': 'changestatusAcadamicYear',
+           'data': {
+            acadamic_year_id: acadamic_year_id,
+            acadamic_year_status: -1
+        }
+        
+         },
+         success: function (result) {
+            if (result.status) {
+                alert("succesfully deleted department");
+            }
+            else {
+                alert(result.message);
+            }
+        } 
+         
+       });
+       $(document).ready(function(){
+        getacadamicyear();
+       });
+       
+
+}
+function enableAcadamicyr(acadamic_year_id) {
+    $.ajax({
+        type: "POST",
+        url: "../api/process.php",
+        dataType: "json",
+        data: { 'action': 'changestatusAcadamicYear',
+        'data': {
+         acadamic_year_id: acadamic_year_id,
+         acadamic_year_status: 1
+     }
+     
+      },
+      success: function (result) {
+         if (result.status) {
+             alert("succesfully enabled department");
+         }
+         else {
+             alert(result.message);
+         }
+     } 
+      
+    });
+    getacadamicyear();
+
+}
+function disableAcadamicyr(acadamic_year_id) {
+    $.ajax({
+        type: "POST",
+        url: "../api/process.php",
+        dataType: "json",
+        data: { 'action': 'changestatusAcadamicYear',
+        'data': {
+         acadamic_year_id: acadamic_year_id,
+         acadamic_year_status: 0
+     }
+     
+      },
+      success: function (result) {
+         if (result.status) {
+             alert("succesfully disabled department");
+         }
+         else {
+             alert(result.message);
+         }
+     } 
+      
+    });
+    getacadamicyear();
 
 }

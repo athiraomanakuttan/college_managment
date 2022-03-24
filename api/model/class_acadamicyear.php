@@ -84,5 +84,22 @@ class class_acadamicyear
     echo json_encode($ret);
     return $ret;
   }
+  public function changestatusAcadamicYear($UID,$CLGID,$data)
+  {
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($UID==''|| $CLGID==''|| $data['acadamic_year_id']==''|| $data['acadamic_year_status']=='' )
+   {
+    echo json_encode($ret);
+    return $ret;
+    }
+    $column_name='acadamic_year_status';
+    $values=$data['acadamic_year_status'];
+    $where= 'acadamic_year_id ='.$data['acadamic_year_id'];
+    $db=new class_db();
+    $ret=$db->update($this->__tablename,$column_name,$values,$where);
+    echo json_encode($ret);
+    return $ret;
+    
+  }
 }
 ?>

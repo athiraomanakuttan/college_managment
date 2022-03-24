@@ -29,6 +29,11 @@ switch ($action) {
              $ret = $department->AddDepartment($UID,$CLGID,$data);
              return $ret;
             break;
+        case 'changestatusAcadamicYear':
+                $changestatusAcadamicYear = new class_acadamicyear();
+                $ret = $changestatusAcadamicYear->changestatusAcadamicYear($UID,$CLGID,$data);
+                return $ret;
+                break;
         case 'ChangestatusDepartment':
             $department = new class_department();
              $ret = $department->changeStatus($UID,$data);

@@ -74,6 +74,7 @@ class class_db{
             return $ret;
         }
         $sql='UPDATE '.$tablename.' SET '.$columns.'='.$values.' WHERE '.$where;
+        // echo $sql;exit;
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly updated data.');
