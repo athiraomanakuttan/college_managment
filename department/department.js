@@ -132,6 +132,10 @@ function deletedepartment(department_id) {
         getdepartments();
     }
 }
+function editdepartment(department_id)
+{
+    
+}
 function validationdepartment() {
     var department_name = $('#department_name').val();
     var department_nature = $('#department_nature').val();
