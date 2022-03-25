@@ -300,6 +300,72 @@
     </div>
   </div>
 </div>
+<div class="modal fade " id="formedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" >
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0 bg-primary" >
+        <h5 class="modal-title" id="exampleModalLabel" >A</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" id="form">
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                 <label for="college_name">Department Name</label>
+                 <input type="text" class="form-control" id="edit_department_name" name="edit_department_name" aria-describedby="emailHelp" placeholder="Department Name">
+               </div>  
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                 <label for="college_name"> Nature</label>
+                 <select name="edit_department_nature" id="edit_department_nature"  class="form-control">
+                     <option value="0" selected disabled>Department Nature</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
+               </div>  
+            </div>
+          </div> 
+           <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                 <label for="college_name">Type</label>
+                 <select name="edit_department_type" id="edit_department_type"  class="form-control">
+                     <option value="0" selected disabled>Department Type</option>
+                     <option value="1">Teaching </option>
+                     <option value="2">Non Teaching</option>
+                 </select>
+                 </div>  
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            
+          <div class="form-actions">
+                      <div class="row">
+                        <div class="col-md-12" style="margin-left: 340px;" >
+                          <button class="btn btn-primary" type="reset" name="reset">
+                            Reset
+                          </button>
+                          <input type="hidden" id="department_id">
+                          <button class="btn btn-success" name="update" type="button" value="update" onclick="updateDepartment()">
+                            Submit
+                          </button>
+                        
+                        </div>
+                      </div>
+                    </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <script>  
 $('table').DataTable();  
 </script>  

@@ -120,12 +120,7 @@ function deletedepartment(department_id) {
                 }
             },
             success: function (result) {
-
-                
-
-                // alert(result);
-
-                if (result.status) {
+        if (result.status) {
                     $.notify(result.message, 'success'); 
                 }
                 else {
@@ -136,6 +131,63 @@ function deletedepartment(department_id) {
         });
         getdepartments();
     }
+}
+function editdepartment(department_id)
+{
+    $('document').ready(function () {
+        $('#formedit').modal('show');
+            });
+    $.ajax({
+        type: "POST",
+        url: '../api/process.php',
+        dataType: 'json',
+        data: {
+            'action': 'updateDepartment',
+            'data': {
+                department_id: department_id,
+                
+            }
+        },
+        success: function (result) {
+            if (result.status) {
+                i=0;
+                data = result.data.rows[i];
+                console.log(data);
+                $('#edit_department_name').val(data.department_name);
+                $('#edit_department_nature').val(data.department_nature);
+                $('#edit_department_type').val(data.department_type);
+                $('#department_id').val(department_id);
+            }
+            else {
+                alert(result.message);
+            }
+        }
+    });
+}
+function updateDepartment()
+{$.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'updatingdepartment',
+                'data': {
+                    department_id:$('#department_id').val(),
+                    department_name: $('#edit_department_name').val(),
+                    department_nature: $('#edit_department_nature').val(),
+                    department_type: $('#edit_department_type').val(),
+                    department_status: 1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("update department succesfully");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+}); getdepartments();
 }
 function validationdepartment() {
     var department_name = $('#department_name').val();

@@ -38,7 +38,17 @@ switch ($action) {
             $department = new class_department();
              $ret = $department->changeStatus($UID,$data);
              return $ret;
-            break;
+            break; 
+        case 'updateDepartment':
+            $department = new class_department();
+             $ret = $department->updatedepartment($CLGID,$data);
+             return $ret;
+            break; 
+        case 'updatingdepartment':
+            $department = new class_department();
+             $ret = $department->updatingdepartment($CLGID,$data);
+             return $ret;
+            break; 
         default :
             echo("invalid action");
             die();    
