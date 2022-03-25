@@ -110,5 +110,20 @@ class class_department
         return $ret;
 
     }
+public function updatedepartment($CLGID,$data)
+  {
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='' || $data['department_id']=='')
+    {
+        echo json_encode($ret);
+        return $ret;
+    }
+    $column_name='`college_registration_id`,`user_login_id`,`department_name`,`department_nature`,`department_type`,`department_status`';
+     $where='`college_registration_id` ='.$CLGID.' and `department_id` ='.$data['department_id'];
+     $db = new class_db();
+     $ret = $db->getList($this->__tablename,$column_name,$where);
+     echo json_encode($ret);
+     return $ret;
+    }    
 }
 ?>

@@ -134,7 +134,39 @@ function deletedepartment(department_id) {
 }
 function editdepartment(department_id)
 {
-    
+    $('document').ready(function () {
+        $('#formedit').modal('show');
+            });
+    $.ajax({
+        type: "POST",
+        url: '../api/process.php',
+        dataType: 'json',
+        data: {
+            'action': 'updateDepartment',
+            'data': {
+                department_id: department_id,
+                
+            }
+        },
+        success: function (result) {
+            if (result.status) {
+                i=0;
+                data = result.data.rows[i];
+                console.log(data);
+                $('#edit_department_name').val(data.department_name);
+                $('#edit_department_nature').val(data.department_nature);
+                $('#edit_department_type').val(data.department_type);
+                $('#department_id').val(department_id);
+            }
+            else {
+                alert(result.message);
+            }
+        }
+    });
+}
+function updateDepartment()
+{
+    alert($('#department_id').val());
 }
 function validationdepartment() {
     var department_name = $('#department_name').val();
