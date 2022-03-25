@@ -207,7 +207,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
-                Acadamic Settings
+                Academic Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

@@ -21,6 +21,12 @@ getacadamicyear();
 }
 function AddAcadamicYear()
 {
+    
+    $("#contactForm").submit(function(event){
+		submitForm();
+		return false;
+	});
+      
     var validation = validationacadamic();
     if (validation)
     {
@@ -47,13 +53,22 @@ function AddAcadamicYear()
                 if(result.status)
                 {
                     alert("acadamic year added succesfully");
+                    $(document).ready(function()
+                    {
+                        
+                            // Coding
+                            $('#form').modal('hide');
+                        
+                    });
                     
                 }
                 else{
                     alert(result.message);
                 }
+               
             }      
         });
+        
         getacadamicyear();
     }
 }

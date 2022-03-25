@@ -120,13 +120,14 @@ function deletedepartment(department_id) {
                 }
             },
             success: function (result) {
-                alert(result);
+                
                 if (result.status) {
                     alert("succesfully deleted department");
                 }
                 else {
                     alert(result.message);
                 }
+                location.reload();
             }
         });
         getdepartments();
