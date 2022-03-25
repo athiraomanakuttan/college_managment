@@ -46,7 +46,7 @@ class class_acadamicyear
             {
                 $status='<a id ="disable_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="enableAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
             }
-            
+            $data[$i]['acadamic_year_name']=ucfirst($data[$i]['acadamic_year_name']);
             $output=$output.'<tr>  
             <th data-class="expand">'.$data[$i]['acadamic_year_name'].' </th>  
             <th data-class="expand">'.$data[$i]['acadamic_year_desc'].'</th>  
@@ -55,7 +55,7 @@ class class_acadamicyear
             <th data-class="expand">'.$data[$i]['acadamic_year_id'].'</th>  
             <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
             <th data-class="expand">'.$status.'</th>  
-            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square" data-target="#formedit" data-toggle="modal"></i></a></th>  
           </tr> ';
         }
         $ret=array('status'=>TRUE,'data'=>$output);
@@ -77,6 +77,14 @@ class class_acadamicyear
     echo json_encode($ret);
     return $ret;
     }
+    if($data['acadamic_status']==1)
+    {
+      $column_name='acadamic_year_status';
+      $values='0';
+      $where= ' college_registration_id ='.$CLGID.' and  acadamic_year_status=1';
+      $db=new class_db();
+      $ret=$db->update($this->__tablename,$column_name,$values,$where);
+    }
     $column_name='`college_registration_id`,`user_login_id`,`acadamic_year_name`,`acadamic_year_desc`,`acadamic_year_start_date`,`acadamic_year_end_date`,`acadamic_year_status`';
     $values=$CLGID.','.$UID.',"'.$data['acadamic_name'].'","'.$data['acadamic_desc'].'","'.$data['acadamic_start_date'].'","'.$data['acadamic_end_date'].'",'.$data['acadamic_status'];
     $db=new class_db();
@@ -91,6 +99,14 @@ class class_acadamicyear
    {
     echo json_encode($ret);
     return $ret;
+    }
+    
+    if($data['acadamic_year_status']==1){
+    $column_name='acadamic_year_status';
+    $values='0';
+    $where= ' college_registration_id ='.$CLGID.' and  acadamic_year_status=1';
+    $db=new class_db();
+    $ret=$db->update($this->__tablename,$column_name,$values,$where);
     }
     $column_name='acadamic_year_status';
     $values=$data['acadamic_year_status'];

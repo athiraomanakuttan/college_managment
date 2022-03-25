@@ -67,14 +67,14 @@ class class_db{
     public function update($tablename,$columns,$values,$where)
     {
         $connection = mysqli_connect("localhost","root","","college_db");
-        $ret = array('status' => FALSE, 'message' => 'Error while selecting data.');
+        $ret = array('status' => FALSE, 'message' => 'Error while updating data.');
         if($tablename=='' || $columns=='' || $values=='' || $where=='')
         {
             echo json_encode($ret);
             return $ret;
         }
         $sql='UPDATE '.$tablename.' SET '.$columns.'='.$values.' WHERE '.$where;
-        // echo $sql;exit;
+        // echo $sql;die();
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly updated data.');

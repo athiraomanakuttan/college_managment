@@ -36,7 +36,7 @@
             <div class="col-6">
              <div class="form-group">
              <label for="phone_no">Phone Number</label>
-             <input type="Number" class="form-control" id="college_phone_no" name="college_phone_no" placeholder="Enter Phone no">
+             <input type="Number" class="form-control" id="college_phone_no" name="college_phone_no" maxlength="10" placeholder="Enter Phone no">
           
            </div>
             </div>
@@ -45,7 +45,7 @@
               <div class="col-6">
                 <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" id="college_email" name="college_email" placeholder="Enter Email">
+                <input type="email" class="form-control" required id="college_email" name="college_email" placeholder="Enter Email" >
               </div>  
             </div>
             <div class="col-6">
@@ -75,7 +75,7 @@
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <button class="btn btn-success" name="add" type="button" value="add" onclick="addnewcollege()">
+                          <button class="btn btn-success" name="add" type="button" value="add" onclick=" return addnewcollege()">
                             Submit
                           </button>
                         

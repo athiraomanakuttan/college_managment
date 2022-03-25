@@ -120,13 +120,18 @@ function deletedepartment(department_id) {
                 }
             },
             success: function (result) {
+<<<<<<< HEAD
+                
+=======
                 // alert(result);
+>>>>>>> c6d5cfd8e29ad7024c59503a8a41143837cce761
                 if (result.status) {
                     $.notify(result.message, 'success'); 
                 }
                 else {
                     alert(result.message);
                 }
+                location.reload();
             }
         });
         getdepartments();

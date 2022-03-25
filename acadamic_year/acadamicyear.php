@@ -196,7 +196,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../home/index.php">Home</a></li>
-              <li class="breadcrumb-item active">Acadamic year</li>
+              <li class="breadcrumb-item active">Academic year</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -207,83 +207,13 @@
     <!-- Main content -->
     <section class="content">
     <style type="text/css">
-    .student-profile .card {
-  border-radius: 10px;
-}
-
-.student-profile .card .card-header .profile_img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin: 10px auto;
-  border: 10px solid #ccc;
-  border-radius: 50%;
-}
-
-.student-profile .card h3 {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.student-profile .card p {
-  font-size: 16px;
-  color: #000;
-}
-
-.student-profile .table th,
-.student-profile .table td {
-  font-size: 14px;
-  padding: 5px 10px;
-  color: #000;
-}
-
-.profile-border{
-    border: 1px solid #e9e1e1;
-}
-</style>
-<style>  
-body {  
-  margin: 0;  
-    min-height: 100vh;  
-  padding: 0;  
-  background-color: var(--clr-light);  
-  color: var(--clr-black);  
-  font-family: 'Poppins', sans-serif;  
-  font-size: 1.125rem;  
-  justify-content: center;  
-  align-items: center;  
-}  
-h2 {  
-font-family: 'Indie Flower', cursive;  
-font-size: 32px;  
-  color: #03A9F4;  
-  font-weight: bold;  
-  text-align: center;  
-  padding: 20px 0;  
-}  
-  
-table caption {  
-    padding: .5em 0;  
-}  
-  
-table.dataTable th  
-{  
-  white-space: nowrap;  
-}  
-table.dataTable td {  
-  white-space: nowrap;  
-}  
-.p {  
-  text-align: center;  
-  padding-top: 140px;  
-  font-size: 14px;  
-}  
+      
 </style>  
 <body>  
   
   
 <div class="container-fluid"> 
-  <h3>Acadamic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <h3>Academic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
@@ -313,7 +243,7 @@ table.dataTable td {
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
-        <h5 class="modal-title" id="exampleModalLabel" >Acadamic Year</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >Academic Year</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -329,7 +259,7 @@ table.dataTable td {
             </div>
             <div class="col-6">
              <div class="form-group">
-             <label for="phone_no">Discription</label>
+             <label for="phone_no">Description</label>
              <input type="text" class="form-control" id="acadamic_desc" name="acadamic_desc" placeholder="Acadamic year discription">
           
            </div>
@@ -365,7 +295,75 @@ table.dataTable td {
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <button class="btn btn-success" name="add" type="button" value="add" onclick="AddAcadamicYear()">
+                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="AddAcadamicYear()">
+                            Submit
+                          </button>
+                        
+                        </div>
+                      </div>
+                    </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade " id="formedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered rounded " role="document" >
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0 bg-primary" >
+        <h5 class="modal-title" id="exampleModalLabel1" >Academic Year</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" id="formedit">
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                 <label for="college_name">Name</label>
+                 <input type="text" class="form-control" id="acadamic_name" name="acadamic_name" aria-describedby="emailHelp" placeholder="Acadamic year Name">
+               </div>  
+            </div>
+            <div class="col-6">
+             <div class="form-group">
+             <label for="phone_no">Description</label>
+             <input type="text" class="form-control" id="acadamic_desc" name="acadamic_desc" placeholder="Acadamic year discription">
+          
+           </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                <label for="Email">From</label>
+                <input type="date" class="form-control" id="acadamic_start_date" name="acadamic_start_date" >
+              </div>  
+            </div>
+            <div class="col-6">
+            <div class="form-group">
+            <label for="password">To</label>
+            <input type="date" class="form-control" id="acadamic_end_date" name="acadamic_end_date" >
+           </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+            <div class="">
+                <input type="checkbox" class="" id="active_acadamic_year">
+                <label class="form-check-label" for="active_acadamic_year">Active</label>
+           </div>
+          </div>
+        </div>
+          <div class="row">
+            
+          <div class="form-actions">
+                      <div class="row">
+                        <div class="col-md-12" style="margin-left: 340px;" >
+                          <button class="btn btn-primary" type="reset" name="reset">
+                            Reset
+                          </button>
+                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="AddAcadamicYear()">
                             Submit
                           </button>
                         
