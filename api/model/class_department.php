@@ -124,6 +124,27 @@ public function updatedepartment($CLGID,$data)
      $ret = $db->getList($this->__tablename,$column_name,$where);
      echo json_encode($ret);
      return $ret;
-    }    
+    } 
+public function updatingdepartment($CLGID,$data)
+{
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='')
+    {
+        echo json_encode($ret); return $ret;
+    }
+    elseif($data['department_id']=='' || $data['department_name']=='' || $data['department_nature']=='' || $data['department_type']=='' || $data['department_status']=='' ){
+        echo json_encode($ret); return $ret;
+    }
+    $column_name=array("department_name","department_nature","department_type");
+    $values=array('"'.$data['department_name'].'"',$data['department_nature'],$data['department_type']);
+    $where='department_id='.$data['department_id'].' and `college_registration_id` ='.$CLGID;
+    for($i=0; $i<count($column_name);$i++)
+    {
+        $db= new class_db();
+        $ret=$db->update($this->__tablename,$column_name[$i],$values[$i],$where);
+    }
+    echo json_encode($ret);
+    return $ret;
+}       
 }
 ?>

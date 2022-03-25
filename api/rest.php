@@ -25,6 +25,7 @@ switch ($action) {
             $ret = $department->GetDepartmentDetails($UID,$CLGID);
             return $ret;
             break;
+           
         default :
             echo("invalid action");
             die();    

@@ -120,11 +120,6 @@ function deletedepartment(department_id) {
                 }
             },
             success: function (result) {
-<<<<<<< HEAD
-                
-=======
-                // alert(result);
->>>>>>> c6d5cfd8e29ad7024c59503a8a41143837cce761
                 if (result.status) {
                     $.notify(result.message, 'success'); 
                 }
@@ -170,8 +165,29 @@ function editdepartment(department_id)
     });
 }
 function updateDepartment()
-{
-    alert($('#department_id').val());
+{$.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'updatingdepartment',
+                'data': {
+                    department_id:$('#department_id').val(),
+                    department_name: $('#edit_department_name').val(),
+                    department_nature: $('#edit_department_nature').val(),
+                    department_type: $('#edit_department_type').val(),
+                    department_status: 1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("update department succesfully");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+}); getdepartments();
 }
 function validationdepartment() {
     var department_name = $('#department_name').val();
