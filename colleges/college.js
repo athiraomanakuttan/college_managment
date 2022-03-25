@@ -1,8 +1,8 @@
 
 function addnewcollege() {
  
-    // var validate=validation();
-
+    var validate=validateform();
+    if(validate){
     $.ajax({
          
         url: "../api/process.php",
@@ -18,8 +18,6 @@ function addnewcollege() {
             }
         },
         success: function (result) {
-            alert(result);
-
             if (result) { alert("New college added successfully"); }
             else { alert("some error occured"); }
 
@@ -29,95 +27,40 @@ function addnewcollege() {
 
 
 
-    })
+    }) }
 }
  
-function validation()
-  {
-    //   alert("hii");
-    // var id = $('#id').val();
-    // Validation
-   
-    $("#form").validate({
-     
-        // Rules for form validation
-        rules : {
-            college_name : {
-                required : true
-            },
-            es_preadmissionid : {
-                required : true
-            },
-            student_name : {
-                required : true
-            },
-            gender : {
-                required : true
-
-            },
-            hobbies : {
-                required : true
-
-            },
-            father_name : {
-                required : true
-                
-            },
-            exam_name : {
-                required : true
-            },
-            exam_date : {
-                required : true
-            },
-            rollnumber : {
-                required : true
-            },
-            marks_obtained : {
-                required : true
-            },
-            rank : {
-                required : true
-            }
-        },
-
-        // Messages for form validation
-        messages : {
-            college_name : {
-                required : 'Class is required'
-            },
-            es_preadmissionid : {
-                required : 'Studen ID is required'
-            },
-            student_name : {
-                required : 'Student Name is required'
-            },
-            gender : {
-                required : 'Gender is required'
-
-            },
-            hobbies : {
-                required : 'Branch is required'
-
-            },
-            father_name : {
-                required : 'Father Name is required'
-                
-            },
-            exam_name : {
-                required : 'Exam Name is required'
-            },
-            exam_date : {
-                required : 'Academic Year is required'
-            },
-            rollnumber : {
-                required : 'Roll Number is required'
-            },
-            marks_obtained : {
-                required : 'Marks is required'
-            },
-            rank : {
-                required : 'Rank is required'
-            }
-        },
-    });
-  }
+function validateform()
+{
+    var college_name = $('#college_name').val();
+    var college_phone_no = $('#college_phone_no').val();
+    var college_email = $('#college_email').val();
+    var college_pwd = $('#college_pwd').val();
+    var college_con_pwd = $('#college_con_pwd').val();
+    var college_address = $('#college_address').val();
+    var phone_lenth = college_phone_no.length;
+    var email_patten = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (college_name == '' || college_phone_no == null || college_email == '' || college_pwd == '' || college_con_pwd == '' || college_address=='')
+    {
+        alert("Please fill required fields"); 
+        return false;
+    }
+    else if (!($.isNumeric(college_phone_no)) || (phone_lenth > 10 || phone_lenth < 10)) {
+        alert("not a valid phone number");
+        return false;
+    }
+    else if (!(email_patten.test(college_email)))
+    {
+        alert("not a valid email");
+        return false;
+    }
+    else if(!(college_con_pwd===college_pwd))
+    {
+        alert("password and confirm password must be same");
+        return false
+    }
+    else {
+        
+        return true;
+    }
+}
