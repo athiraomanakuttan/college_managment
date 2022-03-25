@@ -421,7 +421,6 @@
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
-              <i class="nav-icon fa-solid fa-gear"></i>
               <p>
                 Settings
               </p>

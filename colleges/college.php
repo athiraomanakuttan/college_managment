@@ -6,7 +6,7 @@
   
   ?>
 <script src="college.js"></script>
-<script src="http://notifyjs.com/dist/notify-combined.min.js"></script>
+<!-- <script src="http://notifyjs.com/dist/notify-combined.min.js"></script> -->
 </head>
 
 <div class="container">

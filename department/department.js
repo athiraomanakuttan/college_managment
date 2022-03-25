@@ -120,9 +120,9 @@ function deletedepartment(department_id) {
                 }
             },
             success: function (result) {
-                alert(result);
+                // alert(result);
                 if (result.status) {
-                    alert("succesfully deleted department");
+                    $.notify(result.message, 'success'); 
                 }
                 else {
                     alert(result.message);
