@@ -28,7 +28,7 @@ class class_department
        return $ret;
      } 
      $column_name='`department_id`,`department_name`,`department_nature`,`department_type`,`department_status`';
-     $where='college_registration_id ='.$CLGID.' and user_login_id='.$UID.' and department_status in(0,1)';
+     $where='college_registration_id ='.$CLGID.' and department_status in(0,1)';
      $order_by='department_id desc';
      $db = new class_db();
      $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
@@ -145,6 +145,19 @@ public function updatingdepartment($CLGID,$data)
     }
     echo json_encode($ret);
     return $ret;
-}       
+}  
+public function GetallDepartment($CLGID)
+{
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID==''){
+        echo json_encode($ret); return $ret;
+    }
+    $column_name='`department_id`,`department_name`';
+    $where='college_registration_id ='.$CLGID.' and department_status in(1) and department_type=1';
+    $db= new class_db();
+    $ret=$db->getList($this->__tablename,$column_name,$where);
+    echo json_encode($ret);
+    return $ret;
+}     
 }
 ?>

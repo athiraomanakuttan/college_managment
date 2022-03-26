@@ -25,6 +25,11 @@ switch ($action) {
             $ret = $department->GetDepartmentDetails($UID,$CLGID);
             return $ret;
             break;
+        case 'GetallDepartment':
+            $department = new class_department();
+            $ret = $department->GetallDepartment($CLGID);
+            return $ret;
+            break;
            
         default :
             echo("invalid action");

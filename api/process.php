@@ -49,6 +49,10 @@ switch ($action) {
              $ret = $department->updatingdepartment($CLGID,$data);
              return $ret;
             break; 
+        case 'addprogramme':
+            $programme=new class_programme();
+            $ret=$programme->addprogramme($CLGID,$UID,$data);
+            return $ret;
         default :
             echo("invalid action");
             die();    

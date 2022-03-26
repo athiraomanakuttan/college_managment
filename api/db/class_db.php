@@ -51,7 +51,7 @@ class class_db{
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
 
-        // echo($sql); 
+        // echo($sql); die();
 
         $res=mysqli_query($connection,$sql);
         
