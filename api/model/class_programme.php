@@ -66,20 +66,20 @@ class class_programme
 
             if($data[$i]['programme_status']==1)
             {
-                $status='<a id ="enable_department'.$data[$i]['programme_id'].'" onclick="disabledepartment('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
+                $status='<a id ="enable_programme'.$data[$i]['programme_id'].'" onclick="disableprogramme('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
             }
             elseif($data[$i]['programme_status']==0)
             {
-                $status='<a id ="disable_department'.$data[$i]['programme_id'].'" onclick="enabledepartment('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
+                $status='<a id ="disable_programme'.$data[$i]['programme_id'].'" onclick="enableprogramme('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
             }
             
             $output=$output.'<tr>  
             <th data-class="expand">'.$data[$i]['programme_name'].' </th>  
             <th data-class="expand">'.$data[$i]['department_name'].'</th>  
             <th data-class="expand">'.$type.'</th>   
-            <th data-class="expand"><a id ="dele_department'.$data[$i]['programme_id'].'" onclick="deletedepartment('.$data[$i]['programme_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
+            <th data-class="expand"><a id ="dele_programme'.$data[$i]['programme_id'].'" onclick="deleteprogramme('.$data[$i]['programme_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
             <th data-class="expand">'.$status.'</th>  
-            <th data-class="expand"><a id ="dele_department'.$data[$i]['programme_id'].'" onclick="editdepartment('.$data[$i]['programme_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+            <th data-class="expand"><a id ="dele_programme'.$data[$i]['programme_id'].'" onclick="editprogramme('.$data[$i]['programme_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
           </tr> ';
         }
         $ret=array('status'=>TRUE,'data'=>$output);

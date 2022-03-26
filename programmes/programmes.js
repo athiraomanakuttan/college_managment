@@ -75,6 +75,7 @@ function AddProgramme()
         });
     }
 }
+
 function validateprogramme()
 {
     var programme_name = $('#programme_name').val();
