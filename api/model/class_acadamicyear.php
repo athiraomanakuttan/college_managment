@@ -55,7 +55,7 @@ class class_acadamicyear
             <th data-class="expand">'.$data[$i]['acadamic_year_id'].'</th>  
             <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="deleteAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
             <th data-class="expand">'.$status.'</th>  
-            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square" data-target="#formedit" data-toggle="modal"></i></a></th>  
+            <th data-class="expand"><a id ="dele_acdamic_year'.$data[$i]['acadamic_year_id'].'" onclick="editAcadamicyr('.$data[$i]['acadamic_year_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
           </tr> ';
         }
         $ret=array('status'=>TRUE,'data'=>$output);
@@ -117,6 +117,47 @@ class class_acadamicyear
     return $ret;
     
   }
+  public function selectAcademic($CLGID,$data)
+  {
+    // var_dump($data);exit;
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='' || $data['acadamic_year_id']=='')
+    {
+        echo json_encode($ret);
+        return $ret;
+    }
+    $column_name='`college_registration_id`,`user_login_id`,`acadamic_year_name`,`acadamic_year_desc`,`acadamic_year_start_date`,`acadamic_year_end_date`,`acadamic_year_status`';
+    $where='`college_registration_id` ='.$CLGID.' and `acadamic_year_id` ='.$data['acadamic_year_id'];
+    $db = new class_db();
+    $ret = $db->getList($this->__tablename,$column_name,$where);
+    echo json_encode($ret);
+    return $ret;
+  }
+  public function updateacademic($CLGID,$data)
+  {
+    // var_dump($data);exit;
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='')
+    {
+        echo json_encode($ret); return $ret;
+    }
+    elseif($data['acadamic_year_id']=='' || $data['acadamic_year_name']=='' || $data['acadamic_year_desc']=='' || $data['acadamic_year_start_date']=='' || $data['acadamic_year_end_date']=='' || $data['acadamic_year_status']=='' ){
+      echo json_encode($ret); return $ret;
+  }
+  $column_name=array("acadamic_year_name","acadamic_year_desc","acadamic_year_start_date","acadamic_year_end_date",);
+  $values=array('"'.$data['acadamic_year_name'].'"',$data['acadamic_year_desc'],$data['acadamic_year_start_date'],$data['acadamic_year_end_date']);
+  $where='acadamic_year_id='.$data['acadamic_year_id'].' and `college_registration_id` ='.$CLGID;
+  for($i=0; $i<count($column_name);$i++)
+  {
+      $db= new class_db();
+      $ret=$db->update($this->__tablename,$column_name[$i],$values[$i],$where);
+      // var_dump($ret);
+  }
+  echo json_encode($ret);
+  return $ret;
+  }
+  
+  
    
 }
 ?>

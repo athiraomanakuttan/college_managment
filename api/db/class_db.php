@@ -13,11 +13,12 @@ class class_db{
             $ret['message'] = 'Invalid columns.';
             return $ret; }
         $sql='select '.$columns.' from '.$tableNames;
+        
         if(isset($where) && $where !='')
         { $sql=$sql.' WHERE '.$where; }    
         if(isset($order_by) && $order_by !='')
         { $sql=$sql.' ORDER BY  '.$order_by; } 
-        // echo($sql);die();
+        // echo($sql);
         $res=mysqli_query($connection,$sql);
         
         if($res){ 
@@ -51,7 +52,7 @@ class class_db{
             return $ret; }
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
 
-        // echo($sql); 
+        echo($sql); 
 
         $res=mysqli_query($connection,$sql);
         

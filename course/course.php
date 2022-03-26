@@ -5,7 +5,7 @@
  include '../sidebar/footer.php'; 
  include '../api/db/connection.php';
  ?>
-  <script src="acadamicyear.js"></script>
+  <script src="course.js"></script>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>  
@@ -35,7 +35,7 @@
         <a href="../home/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">course</a>
       </li>
     </ul>
 
@@ -196,7 +196,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../home/index.php">Home</a></li>
-              <li class="breadcrumb-item active">Academic year</li>
+              <li class="breadcrumb-item active">Course</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -206,24 +206,20 @@
 
     <!-- Main content -->
     <section class="content">
-    <style type="text/css">
       
-</style>  
 <body>  
   
   
 <div class="container-fluid"> 
-  <h3>Academic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <h3>Courses <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getcourse()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
         <thead class="bg-primary">  
           <tr>  
-            <th data-class="expand"> AY NAME </th>  
-            <th data-class="expand"> AY DESC </th>  
-            <th data-class="expand">  FROM </th>  
-            <th data-class="expand">  TO </th>  
-            <th data-class="expand"> AY ID</th>  
+            <th data-class="expand">NAME </th>  
+            <th data-class="expand">NATURE</th>  
+            <th data-class="expand">TYPE</th> 
             <th data-class="expand"> D</th>  
             <th data-class="expand"> S</th>  
             <th data-class="expand"> M</th>  
@@ -238,7 +234,7 @@
       </table> 
     </div>  
   </div>  
-</div> 
+</div>  
 <div class="modal fade " id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
@@ -253,14 +249,22 @@
           <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                 <label for="college_name">Name</label>
-                 <input type="text" class="form-control" id="acadamic_name" name="acadamic_name_edit" aria-describedby="emailHelp" placeholder="Acadamic year Name">
+                 <label for="college_name">Department</label>
+                 <select name="Department" id="Department"  class="form-control">
+                     <option value="0" selected disabled>Department</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
                </div>  
             </div>
             <div class="col-6">
              <div class="form-group">
-             <label for="phone_no">Description</label>
-             <input type="text" class="form-control" id="acadamic_desc" name="edit_acadamic_desc" placeholder="Acadamic year discription">
+             <label for="phone_no">Course Category</label>
+             <select name="course_category" id="course_category"  class="form-control">
+                     <option value="0" selected disabled>Course category</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
           
            </div>
             </div>
@@ -268,22 +272,26 @@
           <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                <label for="Email">From</label>
-                <input type="date" class="form-control" id="acadamic_start_date" name="acadamic_start_date" >
+                <label for="phone_no">Course Execution</label>
+                <select name="course_execution" id="course_execution"  class="form-control">
+                     <option value="0" selected disabled>Course Execution</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
               </div>  
             </div>
             <div class="col-6">
             <div class="form-group">
-            <label for="password">To</label>
-            <input type="date" class="form-control" id="acadamic_end_date" name="acadamic_end_date" >
+            <label for="password">Course Code</label>
+            <input type="text" class="form-control" id="course_code" name="course_code" >
            </div>
           </div>
         </div>
         <div class="row">
-            <div class="col-6">
-            <div class="">
-                <input type="checkbox" class="" id="active_acadamic_year">
-                <label class="form-check-label" for="active_acadamic_year">Active</label>
+            <div class="col-12">
+            <div class="form-group">
+            <label for="password">Course Name</label>
+            <input type="text" class="form-control" id="course_name" name="course_name" >
            </div>
           </div>
         </div>
@@ -295,7 +303,7 @@
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="AddAcadamicYear()">
+                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="AddCourse()">
                             Submit
                           </button>
                         
@@ -307,11 +315,11 @@
     </div>
   </div>
 </div> 
-<div class="modal fade " id="editform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade " id="formedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
-        <h5 class="modal-title" id="exampleModalLabel" >Academic Year</h5>
+        <h5 class="modal-title" id="exampleModalLabel" >A</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -319,42 +327,39 @@
       <form method="post" id="form">
       <div class="modal-body">
           <div class="row">
-              <div class="col-6">
+              <div class="col-12">
                 <div class="form-group">
-                 <label for="college_name">Name</label>
-                 <input type="text" class="form-control" id="edit_acadamic_name" name="edit_acadamic_name" aria-describedby="emailHelp" placeholder="Acadamic year Name">
+                 <label for="college_name">Department Name</label>
+                 <input type="text" class="form-control" id="edit_department_name" name="edit_department_name" aria-describedby="emailHelp" placeholder="Department Name">
                </div>  
             </div>
-            <div class="col-6">
-             <div class="form-group">
-             <label for="phone_no">Description</label>
-             <input type="text" class="form-control" id="edit_acadamic_desc" name="edit_acadamic_desc" placeholder="Acadamic year discription">
-          
-           </div>
-            </div>
           </div>
-          <div class="row">
-              <div class="col-6">
+            <div class="row">
+              <div class="col-12">
                 <div class="form-group">
-                <label for="Email">From</label>
-                <input type="date" class="form-control" id="edit_acadamic_start_date" name="edit_acadamic_start_date" >
-              </div>  
+                 <label for="college_name"> Nature</label>
+                 <select name="edit_department_nature" id="edit_department_nature"  class="form-control">
+                     <option value="0" selected disabled>Department Nature</option>
+                     <option value="1">Aided</option>
+                     <option value="2">Self finance</option>
+                 </select>
+               </div>  
             </div>
-            <div class="col-6">
-            <div class="form-group">
-            <label for="password">To</label>
-            <input type="date" class="form-control" id="edit_acadamic_end_date" name="edit_acadamic_end_date" >
-           </div>
+          </div> 
+           <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                 <label for="college_name">Type</label>
+                 <select name="edit_department_type" id="edit_department_type"  class="form-control">
+                     <option value="0" selected disabled>Department Type</option>
+                     <option value="1">Teaching </option>
+                     <option value="2">Non Teaching</option>
+                 </select>
+                 </div>  
+            </div>
           </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-            <div class="">
-                <input type="checkbox" class="" id="active_acadamic_year">
-                <label class="form-check-label" for="active_acadamic_year">Active</label>
-           </div>
-          </div>
-        </div>
+
           <div class="row">
             
           <div class="form-actions">
@@ -363,8 +368,8 @@
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <input type="hidden" id="acadamic_year_id">
-                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="updateacademic()">
+                          <input type="hidden" id="department_id">
+                          <button class="btn btn-success" name="update" type="button" value="update" onclick="updateDepartment()">
                             Submit
                           </button>
                         
@@ -375,9 +380,7 @@
       </form>
     </div>
   </div>
-</div>
-
-
+</div> -->
 <script>  
 $('table').DataTable();  
 </script>  

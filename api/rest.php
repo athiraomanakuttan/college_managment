@@ -25,6 +25,11 @@ switch ($action) {
             $ret = $department->GetDepartmentDetails($UID,$CLGID);
             return $ret;
             break;
+        case 'GetCourse':
+            $course = new class_course();
+            $ret = $course->Getcourse($UID,$CLGID);
+            return $ret;
+            break;
            
         default :
             echo("invalid action");

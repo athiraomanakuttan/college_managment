@@ -49,6 +49,22 @@ switch ($action) {
              $ret = $department->updatingdepartment($CLGID,$data);
              return $ret;
             break; 
+         case 'selectAcademic':
+                $selectAcademic = new class_acadamicyear();
+                $ret = $selectAcademic->selectAcademic($CLGID,$data);
+                 return $ret;
+                break;
+        case 'updateacademic':
+                    $updateacademic = new class_acadamicyear();
+                    $ret = $updateacademic->updateacademic($CLGID,$data);
+                    return $ret;
+                    break;   
+         case 'AddCourse':
+                        $AddCourse = new class_course();
+                         $ret = $AddCourse->AddCourse($UID,$CLGID,$data);
+                         return $ret;
+                        break;   
+
         default :
             echo("invalid action");
             die();    

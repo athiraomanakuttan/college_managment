@@ -162,3 +162,66 @@ function disableAcadamicyr(acadamic_year_id) {
     getacadamicyear();
 
 }
+function editAcadamicyr(acadamic_year_id)
+{
+    
+    $('document').ready(function () {
+        $('#editform').modal('show');
+            });
+            $.ajax({
+                type: "POST",
+                url: '../api/process.php',
+                dataType: 'json',
+                data: {
+                    'action': 'selectAcademic',
+                    'data': {
+                        acadamic_year_id: acadamic_year_id,
+                        
+                    }
+                },
+                success: function (result) {
+                    if (result.status) {
+                        i=0;
+                        data = result.data.rows[i];
+                        console.log(data);
+                        $('#edit_acadamic_name').val(data.acadamic_year_name);
+                        $('#edit_acadamic_desc').val(data.acadamic_year_desc);
+                        $('#edit_acadamic_start_date').val(data.acadamic_year_start_date);
+                        $('#edit_acadamic_end_date').val(data.acadamic_year_end_date);
+                        $('#acadamic_year_id').val(acadamic_year_id);
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+            
+}
+function updateacademic()
+{
+   
+    $.ajax({
+        type: "POST",
+        url: '../api/process.php',
+        dataType: 'json',
+        data: {
+            'action': 'updateacademic',
+            'data': {
+                acadamic_year_id:$('#acadamic_year_id').val(),
+                acadamic_year_name: $('#edit_acadamic_name').val(),
+                acadamic_year_desc: $('#edit_acadamic_desc').val(),
+                acadamic_year_start_date: $('#edit_acadamic_start_date').val(),
+                acadamic_year_end_date: $('#edit_acadamic_end_date').val(),
+                acadamic_year_status: 1
+            }
+        },
+        success: function (result) {
+            if (result.status) {
+                alert("update department succesfully");
+            }
+            else {
+                alert(result.message);
+            }
+        }
+});  getacadamicyear();
+}
