@@ -1,4 +1,23 @@
 getdepartments();
+getprogramme();
+function getprogramme()
+{
+    $.ajax({
+        type: "POST",
+        url: "../api/rest.php",
+        data: { 'action': 'getallprograme' },
+        dataType: "json",
+        encode: true,
+        success:function(datas)
+        {
+            if(datas.status)
+            {
+                $('#programme_body').html(datas.data);
+            }
+        }
+
+    });
+}
 function getdepartments() {
     $.ajax({
         type: "POST",

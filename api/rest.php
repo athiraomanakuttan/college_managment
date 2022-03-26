@@ -30,7 +30,11 @@ switch ($action) {
             $ret = $department->GetallDepartment($CLGID);
             return $ret;
             break;
-           
+        case 'getallprograme':
+            $programme=new class_programme();
+            $ret=$programme->getallprogrammes($CLGID);
+            return $ret;
+            break;
         default :
             echo("invalid action");
             die();    

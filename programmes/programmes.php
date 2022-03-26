@@ -225,7 +225,7 @@
             <th data-class="expand"> M</th>  
           </tr>  
         </thead>
-        <tbody id='table_body' >
+        <tbody id='programme_body' >
 
         </tbody>
         <tfoot>  

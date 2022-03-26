@@ -21,6 +21,71 @@ class class_programme
     return $ret;
 
     }
+    public function getallprogrammes($CLGID)
+    {
+        $ret=array('status'=>FALSE,'message'=>'eroor while adding programmes');
+        if($CLGID=='')
+        {
+            echo json_encode($ret); return $ret;
+        }
+        $column_name='`programme_id`,`programme_name`,`programme_department`,`programme_type`,`programme_status`,`department_name`';
+        $table_name=$this->__tablename.' JOIN department on programmes.programme_department= department.department_id';
+        $where='programmes.college_registration_id ='.$CLGID.' and programme_status in(0,1)';
+        $order_by='programme_id desc';
+        $db = new class_db();
+        $ret = $db->getList($table_name,$column_name,$where,$order_by);
+        if($ret['status'])
+        {
+            $displaydata=$ret['data']['rows'];
+            $displaycount=$ret['data']['count'];
+            $ret=$this->display_list($displaydata,$displaycount);
+        }
+        // echo($ret); 
+        echo json_encode($ret); 
+        return $ret;
+        
+    }
+  public function display_list($data,$count)
+    {
+        $ret=array('status'=>FALSE,'message'=>'error while display data');
+        if($data=='' || $count=='')
+        {
+            return $ret;
+        }
+        $output='';
+        for($i=0; $i<$count; $i++)
+        {
+            if($data[$i]['programme_type']==1)
+            {
+                $type='UG';
+            } elseif($data[$i]['programme_type']==2)
+            {
+                $type='PG';
+            }
+            
+
+            if($data[$i]['programme_status']==1)
+            {
+                $status='<a id ="enable_department'.$data[$i]['programme_id'].'" onclick="disabledepartment('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-on text-primary" aria-hidden="true"></i></a>';
+            }
+            elseif($data[$i]['programme_status']==0)
+            {
+                $status='<a id ="disable_department'.$data[$i]['programme_id'].'" onclick="enabledepartment('.$data[$i]['programme_id'].')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
+            }
+            
+            $output=$output.'<tr>  
+            <th data-class="expand">'.$data[$i]['programme_name'].' </th>  
+            <th data-class="expand">'.$data[$i]['department_name'].'</th>  
+            <th data-class="expand">'.$type.'</th>   
+            <th data-class="expand"><a id ="dele_department'.$data[$i]['programme_id'].'" onclick="deletedepartment('.$data[$i]['programme_id'].')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>  
+            <th data-class="expand">'.$status.'</th>  
+            <th data-class="expand"><a id ="dele_department'.$data[$i]['programme_id'].'" onclick="editdepartment('.$data[$i]['programme_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
+          </tr> ';
+        }
+        $ret=array('status'=>TRUE,'data'=>$output);
+        return  $ret;
+    }
+
 
 }
 ?>
