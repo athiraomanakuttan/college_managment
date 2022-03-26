@@ -2,6 +2,7 @@ getdepartments();
 getprogramme();
 function getprogramme()
 {
+    alert("ji");
     $.ajax({
         type: "POST",
         url: "../api/rest.php",
@@ -12,7 +13,10 @@ function getprogramme()
         {
             if(datas.status)
             {
-                $('#programme_body').html(datas.data);
+                $(document).ready(function(){
+                    $('#programme_body').html(datas.data);
+                })
+              
             }
         }
 
