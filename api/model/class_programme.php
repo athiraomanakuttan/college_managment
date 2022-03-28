@@ -86,6 +86,64 @@ class class_programme
         return  $ret;
     }
 
-
+public function ChangestatusProgramme($CLGID,$data)
+{
+     $ret=array('status'=>FALSE,'message'=>'error while updating status');
+        if($CLGID==''){
+            echo json_encode($ret);
+            return $ret;
+        }
+        elseif($data['programme_id']=='' || $data['programme_status']=='')
+        {
+            echo json_encode($ret);
+            return $ret;
+        }
+        $column_name='programme_status';
+        $values=$data['programme_status'];
+        $where='programme_id='.$data['programme_id'];
+        $db= new class_db();
+        $ret=$db->update($this->__tablename,$column_name,$values,$where);
+        echo json_encode($ret);
+        return $ret;
+}
+public function updateProgramme($CLGID,$data)
+{
+    
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='' || $data['programme_id']=='')
+    {
+        echo json_encode($ret);
+        return $ret;
+    }
+     $column_name='`programme_id`,`programme_name`,`programme_department`,`programme_type`,`programme_status`,`department_id`';
+     $table_name=$this->__tablename.' JOIN department on programmes.programme_department= department.department_id';
+     $where='programmes.`college_registration_id` ='.$CLGID.' and `programme_id` ='.$data['programme_id'];
+     $db = new class_db();
+     $ret = $db->getList($table_name,$column_name,$where);
+     echo json_encode($ret);
+     return $ret;
+}
+public function updatingprogramme($CLGID,$data)
+{
+    
+    $ret=array('status'=>FALSE,'message'=>'Error while updating data');
+    if($CLGID=='')
+    {
+        echo json_encode($ret); return $ret;
+    }
+    elseif($data['programme_id']=='' || $data['programme_name']=='' || $data['programme_department']=='' || $data['programme_type']=='' || $data['programme_status']=='' ){
+        echo json_encode($ret); return $ret;
+    }
+    $column_name=array("programme_name","programme_department","programme_type");
+    $values=array('"'.$data['programme_name'].'"',$data['programme_department'],$data['programme_type']);
+    $where='programme_id='.$data['programme_id'].' and `college_registration_id` ='.$CLGID;
+    for($i=0; $i<count($column_name);$i++)
+    {
+        $db= new class_db();
+        $ret=$db->update($this->__tablename,$column_name[$i],$values[$i],$where);
+    }
+    echo json_encode($ret);
+    return $ret;
+}
 }
 ?>

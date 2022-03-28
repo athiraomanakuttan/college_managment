@@ -2,7 +2,6 @@ getdepartments();
 getprogramme();
 function getprogramme()
 {
-    alert("ji");
     $.ajax({
         type: "POST",
         url: "../api/rest.php",
@@ -22,6 +21,97 @@ function getprogramme()
 
     });
 }
+function disableprogramme(programme_id)
+{
+    if (programme_id == '') {
+        alert("some error occured"); return;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusProgramme',
+                'data': {
+                    programme_id: programme_id,
+                    programme_status: 0
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully disabled Programmes");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getprogramme();
+    }
+    
+    
+}
+function enableprogramme(programme_id)
+{
+
+    if (programme_id == '') {
+        alert("some error occured"); return;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusProgramme',
+                'data': {
+                    programme_id: programme_id,
+                    programme_status: 1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully disabled Programmes");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getprogramme();
+    }
+}
+function deleteprogramme(programme_id)
+{
+
+    if (programme_id == '') {
+        alert("some error occured"); return;
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: {
+                'action': 'ChangestatusProgramme',
+                'data': {
+                    programme_id: programme_id,
+                    programme_status: -1
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully disabled Programmes");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+        getprogramme();
+    }
+}
 function getdepartments() {
     $.ajax({
         type: "POST",
@@ -37,6 +127,10 @@ function getdepartments() {
                 for(i=0; i<count; i++)
                 {
                     $('#programme_department').append($('<option/>', {
+                        value: data[i].department_id,
+                        text: data[i].department_name
+                    }));
+                    $('#edit_programme_department').append($('<option/>', {
                         value: data[i].department_id,
                         text: data[i].department_name
                     }));
@@ -79,7 +173,64 @@ function AddProgramme()
         });
     }
 }
-
+function editprogramme(programme_id)
+{
+    $('document').ready(function () {
+        $('#formedit').modal('show');
+    });
+    $.ajax({
+        type: "POST",
+        url: '../api/process.php',
+        dataType: 'json',
+        data: {
+            'action': 'updateProgramme',
+            'data': {
+                programme_id: programme_id
+            }
+        },
+        success: function (result) {
+            if (result.status) {
+                i = 0;
+                data = result.data.rows[i];
+                console.log(data);
+                $('#edit_programme_name').val(data.programme_name);
+                $('#edit_programme_department').val(data.department_id);
+                $('#edit_programme_type').val(data.programme_type);
+                $('#programme_id').val(programme_id);
+            }
+            else {
+                alert(result.message);
+            }
+        }
+    });
+}
+function updatingprogramme()
+{
+    $.ajax({
+        type: "POST",
+        url: '../api/process.php',
+        dataType: 'json',
+        data: {
+            'action': 'updatingprogramme',
+            'data': {
+                programme_id: $('#programme_id').val(),
+                programme_name: $('#edit_programme_name').val(),
+                programme_department: $('#edit_programme_department').val(),
+                programme_type: $('#edit_programme_type').val(),
+                programme_status: 1
+            }
+        },
+        success: function (result) {
+            if (result.status) {
+                alert("update department succesfully");
+            }
+            else {
+                alert(result.message);
+            }
+        }
+    });
+    getprogramme();
+}
 function validateprogramme()
 {
     var programme_name = $('#programme_name').val();

@@ -165,7 +165,8 @@ function editdepartment(department_id)
     });
 }
 function updateDepartment()
-{$.ajax({
+{
+    $.ajax({
             type: "POST",
             url: '../api/process.php',
             dataType: 'json',
