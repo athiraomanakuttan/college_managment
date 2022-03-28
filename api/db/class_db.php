@@ -53,6 +53,7 @@ class class_db{
         $sql='insert into '.$tablename.'('.$columns.') values ('.$values.')';
 
         echo($sql); 
+        // echo($sql); die();
 
         $res=mysqli_query($connection,$sql);
         

@@ -8,4 +8,5 @@ require_once('class_college.php');
 require_once('class_userlogin.php');
 require_once('class_loginlog.php');
 require_once('class_department.php');
+require_once('class_programme.php');
 ?>

@@ -231,7 +231,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="../programmes/programmes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Programme</p>
                 </a>

@@ -65,6 +65,26 @@ switch ($action) {
                          return $ret;
                         break;   
 
+        case 'addprogramme':
+            $programme=new class_programme();
+            $ret=$programme->addprogramme($CLGID,$UID,$data);
+            return $ret;
+            break;
+        case 'ChangestatusProgramme':
+            $programme=new class_programme();
+            $ret=$programme->ChangestatusProgramme($CLGID,$data);
+            return $ret;
+            break;     
+        case 'updateProgramme':
+            $programme=new class_programme();
+            $ret=$programme->updateProgramme($CLGID,$data);
+            return $ret;
+            break;     
+        case 'updatingprogramme':
+            $programme=new class_programme();
+            $ret=$programme->updatingprogramme($CLGID,$data);
+            return $ret;
+            break;     
         default :
             echo("invalid action");
             die();    
