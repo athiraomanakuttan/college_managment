@@ -25,7 +25,7 @@ switch ($action) {
             $ret = $department->GetDepartmentDetails($UID,$CLGID);
             return $ret;
             break;
-        case 'GetCourse':
+        case 'getallcourse':
             $course = new class_course();
             $ret = $course->Getcourse($UID,$CLGID);
             return $ret;

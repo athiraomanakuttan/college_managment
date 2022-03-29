@@ -1,3 +1,26 @@
+getcourse();
+getdepartments();
+ function getcourse()
+ {
+    $.ajax({
+        type: "POST",
+        url: "../api/rest.php",
+        data: { 'action': 'getallcourse' },
+        dataType: "json",
+        encode: true,
+        success:function(datas)
+        {
+            if(datas.status)
+            {
+                $(document).ready(function(){
+                    $('#table_body').html(datas.data);
+                })
+              
+            }
+        }
+
+    });
+ }
 function AddCourse()
 {
     
@@ -21,7 +44,7 @@ function AddCourse()
             data: {
                 'action':'AddCourse',
                 'data':{
-            course_dep: $('#Department').val(),
+            course_dep: $('#course_dep').val(),
             course_category: $('#course_category').val(),
             course_execution: $('#course_execution').val(),
             course_code: $('#course_code').val(),
@@ -30,6 +53,7 @@ function AddCourse()
                   },
             success:function(result)
             {
+                    
                 if(result.status)
                 {
                     alert("course added succesfully");
@@ -50,4 +74,33 @@ function AddCourse()
         });
         
        
+    }
+    function getdepartments() {
+        $.ajax({
+            type: "POST",
+            url: "../api/rest.php",
+            data: { 'action': 'GetallDepartment' },
+            dataType: "json",
+            encode: true,
+        }).done(function (datas) {
+            if (datas.status) {
+                var count = datas.data.count;
+                var data = datas.data.rows;
+                $(document).ready(function () {
+                    for(i=0; i<count; i++)
+                    {
+                        $('#programme_department').append($('<option/>', {
+                            value: data[i].department_id,
+                            text: data[i].department_name
+                        }));
+                        $('#edit_programme_department').append($('<option/>', {
+                            value: data[i].department_id,
+                            text: data[i].department_name
+                        }));
+                    }
+                });
+    
+            }
+            else { }
+        });
     }
