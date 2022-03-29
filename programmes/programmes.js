@@ -203,6 +203,7 @@ function editprogramme(programme_id)
             }
         }
     });
+    
 }
 function updatingprogramme()
 {
@@ -228,6 +229,11 @@ function updatingprogramme()
                 alert(result.message);
             }
         }
+    });
+    $('document').ready(function () {
+        // $('#formedit').modal('hide');
+        $('#formedit').modal('toggle');
+        // alert("jooo");
     });
     getprogramme();
 }
