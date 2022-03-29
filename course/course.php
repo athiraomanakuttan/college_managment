@@ -214,14 +214,14 @@
   <h3>Courses <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getcourse()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
-      <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
+    <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
         <thead class="bg-primary">  
           <tr>  
-            <th data-class="expand">NAME </th>  
-            <th data-class="expand">NATURE</th>  
-            <th data-class="expand">TYPE</th> 
-            <th data-class="expand"> D</th>  
-            <th data-class="expand"> S</th>  
+            <th data-class="expand">Department </th>  
+            <th data-class="expand">Name</th>  
+            <th data-class="expand">Category</th> 
+            <th data-class="expand"> Execution</th>  
+            <th data-class="expand"> Code</th>  
             <th data-class="expand"> M</th>  
           </tr>  
         </thead>
@@ -250,10 +250,11 @@
               <div class="col-6">
                 <div class="form-group">
                  <label for="college_name">Department</label>
-                 <select name="Department" id="Department"  class="form-control">
+                 <select name="course_dep" id="course_dep"  class="form-control">
                      <option value="0" selected disabled>Department</option>
                      <option value="1">Aided</option>
                      <option value="2">Self finance</option>
+                     
                  </select>
                </div>  
             </div>
@@ -262,8 +263,9 @@
              <label for="phone_no">Course Category</label>
              <select name="course_category" id="course_category"  class="form-control">
                      <option value="0" selected disabled>Course category</option>
-                     <option value="1">Aided</option>
-                     <option value="2">Self finance</option>
+                     <option value="1">Core Course</option>
+                     <option value="2">Common Course</option>
+                     <option value="2">Complementary Course</option>
                  </select>
           
            </div>
@@ -275,8 +277,10 @@
                 <label for="phone_no">Course Execution</label>
                 <select name="course_execution" id="course_execution"  class="form-control">
                      <option value="0" selected disabled>Course Execution</option>
-                     <option value="1">Aided</option>
-                     <option value="2">Self finance</option>
+                     <option value="1">Theory</option>
+                     <option value="2">Prtaical</option>
+                     <option value="3">Project</option>
+                     <option value="3">Theory&Pratical</option>
                  </select>
               </div>  
             </div>

@@ -234,7 +234,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../courses/course.php" class="nav-link">
+                <a href="../course/course.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Courses</p>
                 </a>

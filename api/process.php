@@ -60,10 +60,10 @@ switch ($action) {
                     return $ret;
                     break;   
          case 'AddCourse':
-                        $AddCourse = new class_course();
-                         $ret = $AddCourse->AddCourse($UID,$CLGID,$data);
-                         return $ret;
-                        break;   
+            $AddCourse = new class_course();
+            $ret = $AddCourse->AddCourse($UID,$CLGID,$data);
+            return $ret;
+            break;   
 
         case 'addprogramme':
             $programme=new class_programme();

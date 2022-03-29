@@ -9,4 +9,5 @@ require_once('class_userlogin.php');
 require_once('class_loginlog.php');
 require_once('class_department.php');
 require_once('class_programme.php');
+require_once('class_course.php');
 ?>
