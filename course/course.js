@@ -1,4 +1,4 @@
-getcourse();
+getcourse()
 getdepartments();
  function getcourse()
  {
@@ -89,11 +89,11 @@ function AddCourse()
                 $(document).ready(function () {
                     for(i=0; i<count; i++)
                     {
-                        $('#programme_department').append($('<option/>', {
+                        $('#course_dep').append($('<option/>', {
                             value: data[i].department_id,
                             text: data[i].department_name
                         }));
-                        $('#edit_programme_department').append($('<option/>', {
+                        $('#course_dep').append($('<option/>', {
                             value: data[i].department_id,
                             text: data[i].department_name
                         }));
