@@ -211,7 +211,7 @@ function updatingprogramme()
         type: "POST",
         url: '../api/process.php',
         dataType: 'json',
-        data: {
+        data: { 
             'action': 'updatingprogramme',
             'data': {
                 programme_id: $('#programme_id').val(),

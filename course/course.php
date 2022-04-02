@@ -252,8 +252,6 @@
                  <label for="college_name">Department</label>
                  <select name="course_dep" id="course_dep"  class="form-control">
                      <option value="0" selected disabled>Department</option>
-                     <option value="1">Aided</option>
-                     <option value="2">Self finance</option>
                      
                  </select>
                </div>  

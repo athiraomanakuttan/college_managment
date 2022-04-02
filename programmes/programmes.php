@@ -211,7 +211,7 @@
   
   
 <div class="container-fluid"> 
-  <h3>Programmes batch <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getprogramme()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <h3>Programmes<i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getprogramme()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
