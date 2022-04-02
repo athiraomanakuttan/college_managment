@@ -41,6 +41,11 @@ function AddDepartment() {
                 }
             }
         });
+        $('document').ready(function () {
+            // $('#formedit').modal('hide');
+            $('#form').modal('toggle');
+            // alert("jooo");
+        });
         getdepartments();
     }
 }
@@ -188,7 +193,13 @@ function updateDepartment()
                     alert(result.message);
                 }
             }
-}); getdepartments();
+});
+$('document').ready(function () {
+    // $('#formedit').modal('hide');
+    $('#formedit').modal('toggle');
+    // alert("jooo");
+});
+getdepartments();
 }
 function validationdepartment() {
     var department_name = $('#department_name').val();

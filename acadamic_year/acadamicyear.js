@@ -68,6 +68,11 @@ function AddAcadamicYear()
                
             }      
         });
+        $('document').ready(function () {
+            // $('#formedit').modal('hide');
+            $('#form').modal('toggle');
+            // alert("jooo");
+        });
         
         getacadamicyear();
     }
@@ -164,6 +169,10 @@ function disableAcadamicyr(acadamic_year_id) {
 }
 function editAcadamicyr(acadamic_year_id)
 {
+    $('document').ready(function () {
+        $('#form').modal('toggle');
+        $('#editform').modal('show');
+    });
     
     $('document').ready(function () {
         $('#editform').modal('show');
@@ -223,5 +232,11 @@ function updateacademic()
                 alert(result.message);
             }
         }
-});  getacadamicyear();
+}); 
+$('document').ready(function () {
+    // $('#formedit').modal('hide');
+    $('#editform').modal('toggle');
+    // alert("jooo");
+});
+getacadamicyear();
 }

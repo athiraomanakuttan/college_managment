@@ -171,7 +171,16 @@ function AddProgramme()
             } 
 
         });
+        
     }
+    $('document').ready(function () {
+        // $('#formedit').modal('hide');
+        $('#form').modal('toggle');
+        // alert("jooo");
+    });
+    getprogramme();
+    
+   
 }
 function editprogramme(programme_id)
 {
