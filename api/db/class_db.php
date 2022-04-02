@@ -75,8 +75,9 @@ class class_db{
             echo json_encode($ret);
             return $ret;
         }
+        // var_dump("insieddefeey"); die();
         $sql='UPDATE '.$tablename.' SET '.$columns.'='.$values.' WHERE '.$where;
-        // echo $sql;die();
+        // echo($sql);echo('<br>'); die();
         $res=mysqli_query($connection,$sql);
         if($res){
             $res = array('status' => TRUE, 'message' => 'Successfuly updated data.');

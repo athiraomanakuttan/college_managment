@@ -217,12 +217,14 @@
     <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
         <thead class="bg-primary">  
           <tr>  
-            <th data-class="expand">Department </th>  
+            <th data-class="expand">Dep </th>  
             <th data-class="expand">Name</th>  
             <th data-class="expand">Category</th> 
             <th data-class="expand"> Execution</th>  
             <th data-class="expand"> Code</th>  
-            <th data-class="expand"> M</th>  
+            <th data-class="expand"> D</th>  
+            <th data-class="expand"> S</th>  
+            <th data-class="expand"> M</th> 
           </tr>  
         </thead>
         <tbody id='table_body' >
@@ -253,6 +255,7 @@
                  <select name="course_dep" id="course_dep"  class="form-control">
                      <option value="0" selected disabled>Department</option>
                      
+                     
                  </select>
                </div>  
             </div>
@@ -276,7 +279,7 @@
                 <select name="course_execution" id="course_execution"  class="form-control">
                      <option value="0" selected disabled>Course Execution</option>
                      <option value="1">Theory</option>
-                     <option value="2">Prtaical</option>
+                     <option value="2">Pratical</option>
                      <option value="3">Project</option>
                      <option value="3">Theory&Pratical</option>
                  </select>
@@ -317,7 +320,7 @@
     </div>
   </div>
 </div> 
-<!-- <div class="modal fade " id="formedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="formedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered rounded " role="document" >
     <div class="modal-content">
       <div class="modal-header border-bottom-0 bg-primary" >
@@ -329,39 +332,56 @@
       <form method="post" id="form">
       <div class="modal-body">
           <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                 <label for="college_name">Department Name</label>
-                 <input type="text" class="form-control" id="edit_department_name" name="edit_department_name" aria-describedby="emailHelp" placeholder="Department Name">
-               </div>  
+              <div class="col-6">
+              <div class="form-group">
+              <label for="college_name"> Department</label>
+                 <select name="editcourse_dep" id="editcourse_dep"  class="form-control">
+                     <option value="0" selected disabled>Programme department</option>
+                 </select>
+               </div>   
+            </div>
+            <div class="col-6">
+             <div class="form-group">
+             <label for="phone_no">Course Category</label>
+             <select name="editcourse_category" id="editcourse_category"  class="form-control">
+                     <option value="0" selected disabled>Course category</option>
+                     <option value="1">Core Course</option>
+                     <option value="2">Common Course</option>
+                     <option value="2">Complementary Course</option>
+                 </select>
+          
+           </div>
             </div>
           </div>
-            <div class="row">
-              <div class="col-12">
+          <div class="row">
+              <div class="col-6">
                 <div class="form-group">
-                 <label for="college_name"> Nature</label>
-                 <select name="edit_department_nature" id="edit_department_nature"  class="form-control">
-                     <option value="0" selected disabled>Department Nature</option>
-                     <option value="1">Aided</option>
-                     <option value="2">Self finance</option>
+                <label for="phone_no">Course Execution</label>
+                <select name="editcourse_execution" id="editcourse_execution"  class="form-control">
+                     <option value="0" selected disabled>Course Execution</option>
+                     <option value="1">Theory</option>
+                     <option value="2">Pratical</option>
+                     <option value="3">Project</option>
+                     <option value="3">Theory&Pratical</option>
                  </select>
-               </div>  
+              </div>  
             </div>
-          </div> 
-           <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                 <label for="college_name">Type</label>
-                 <select name="edit_department_type" id="edit_department_type"  class="form-control">
-                     <option value="0" selected disabled>Department Type</option>
-                     <option value="1">Teaching </option>
-                     <option value="2">Non Teaching</option>
-                 </select>
-                 </div>  
-            </div>
+            <div class="col-6">
+            <div class="form-group">
+            <label for="password">Course Code</label>
+            <input type="text" class="form-control" id="editcourse_code" name="editcourse_code" >
+           </div>
           </div>
         </div>
-
+        <div class="row">
+            <div class="col-12">
+            <div class="form-group">
+            <label for="password">Course Name</label>
+            <input type="text" class="form-control" id="editcourse_name" name="editcourse_name" >
+           </div>
+          </div>
+        </div>
+        <input type="hidden" class="form-control" id="course_id" name="course_id" >
           <div class="row">
             
           <div class="form-actions">
@@ -370,8 +390,7 @@
                           <button class="btn btn-primary" type="reset" name="reset">
                             Reset
                           </button>
-                          <input type="hidden" id="department_id">
-                          <button class="btn btn-success" name="update" type="button" value="update" onclick="updateDepartment()">
+                          <button class="btn btn-success" id="add" name="add" type="button" value="add" onclick="updateCourse()">
                             Submit
                           </button>
                         
@@ -382,7 +401,7 @@
       </form>
     </div>
   </div>
-</div> -->
+</div>
 <script>  
 $('table').DataTable();  
 </script>  

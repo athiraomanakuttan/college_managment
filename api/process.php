@@ -84,7 +84,22 @@ switch ($action) {
             $programme=new class_programme();
             $ret=$programme->updatingprogramme($CLGID,$data);
             return $ret;
-            break;     
+            break;
+        case 'ChangestatusCourse':
+            $course=new class_course();
+            $ret=$course->ChangestatusCourse($CLGID,$data);
+            return $ret;
+             break;
+        case 'updatecourse':
+                $course=new class_course();
+                $ret=$course->updatecourse($CLGID,$data);
+                return $ret;
+                break;
+         case 'updatingCourse':
+                    $course=new class_course();
+                    $ret=$course->updatingCourse($CLGID,$data);
+                    return $ret;
+                    break;             
         default :
             echo("invalid action");
             die();    
