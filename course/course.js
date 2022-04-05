@@ -17,17 +17,6 @@ function getcourse() {
         }
 
     });
-<<<<<<< HEAD
-}
-function AddCourse() {
-
-    $("#contactForm").submit(function (event) {
-        submitForm();
-        return false;
-    });
-
-    // var validation = validationacadamic();
-=======
  }
 function AddCourse()
 {
@@ -38,7 +27,6 @@ function AddCourse()
 	});
       
     var validation = validateCourse();
->>>>>>> f684c9ca5f140440fcb81b4550f5d302ada593be
     // if (validation)
     // {
     //     if($('#active_acadamic_year').is(':checked'))
