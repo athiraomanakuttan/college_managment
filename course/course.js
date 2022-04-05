@@ -116,44 +116,6 @@ function AddCourse()
                 });
 
             }
-<<<<<<< HEAD
-            else {
-                alert(result.message);
-            }
-
-        }
-    });
-
-
-}
-function getdepartments() {
-    $.ajax({
-        type: "POST",
-        url: "../api/rest.php",
-        data: { 'action': 'GetallDepartment' },
-        dataType: "json",
-        encode: true,
-    }).done(function (datas) {
-        if (datas.status) {
-            var count = datas.data.count;
-            var data = datas.data.rows;
-            $(document).ready(function () {
-                for (i = 0; i < count; i++) {
-                    $('#course_dep').append($('<option/>', {
-                        value: data[i].department_id,
-                        text: data[i].department_name
-                    }));
-                    $('#course_dep').append($('<option/>', {
-                        value: data[i].department_id,
-                        text: data[i].department_name
-                    }));
-                }
-            });
-
-        }
-        else { }
-    });
-=======
             else { }
         });
     }
@@ -340,5 +302,4 @@ function updateCourse()
     else{
         return true;
     }
->>>>>>> f684c9ca5f140440fcb81b4550f5d302ada593be
 }
