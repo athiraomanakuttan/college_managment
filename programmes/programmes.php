@@ -226,11 +226,6 @@
           </tr>  
         </thead>
         <tbody id='programme_body' >
-
-        </tbody>
-        <tfoot>  
-          
-     </tfoot>  
       </table> 
       <p id="cc"></p>
     </div>  

@@ -18,13 +18,13 @@ class class_acadamicyear
      $order_by='acadamic_year_id';
      $db = new class_db();
      $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
-     if($ret['status'])
-     {
+    //  if($ret['status'])
+    //  {
        
-       $displaydata=$ret['data']['rows'];
-       $displaycount=$ret['data']['count'];
-      $ret=$this->display_list($displaydata,$displaycount);
-     }
+    //    $displaydata=$ret['data']['rows'];
+    //    $displaycount=$ret['data']['count'];
+    //   $ret=$this->display_list($displaydata,$displaycount);
+    //  }
      echo json_encode($ret);
      return $ret;
   }

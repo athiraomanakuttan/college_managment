@@ -13,11 +13,12 @@ class class_course
      echo json_encode($ret);
      return $ret;
    } 
-   $column_name='`college_registration_id`,`course_id`, `course_dep`, `course_category`, `course_execution`, `course_code`, `course_name` ,`status` ';
-   $where='college_registration_id ='.$CLGID.' and status in(0,1)';
+   $column_name='department_name,courses.`college_registration_id`,`course_id`, `course_dep`, `course_category`, `course_execution`, `course_code`, `course_name` ,`status` ';
+   $where='courses.college_registration_id ='.$CLGID.' and status in(0,1)';
    $order_by='course_id desc';
+   $table_name=$this->__tablename.' JOIN department on courses.course_dep= department.department_id';
    $db = new class_db();
-   $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
+   $ret = $db->getList($table_name,$column_name,$where,$order_by);
   
    if($ret['status'])
    {
@@ -81,7 +82,7 @@ class class_course
       }
           $data[$i]['course_name']=ucfirst($data[$i]['course_name']);
           $output=$output.'<tr> 
-          <th data-class="expand">'.$data[$i]['course_dep'].'</th> 
+          <th data-class="expand">'.$data[$i]['department_name'].'</th> 
           <th data-class="expand">'.$data[$i]['course_name'].' </th>  
           <th data-class="expand">'.$course_category.'</th>   
           <th data-class="expand">'.$course_exe.'</th>  

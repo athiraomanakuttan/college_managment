@@ -1,11 +1,11 @@
 getdepartments();
-getprogramme();
-function getprogramme()
+getprogramme(1);
+function getprogramme(page_number)
 {
     $.ajax({
         type: "POST",
         url: "../api/rest.php",
-        data: { 'action': 'getallprograme' },
+        data: { 'action': 'getallprograme', 'page_no': page_number },
         dataType: "json",
         encode: true,
         success:function(datas)
@@ -13,6 +13,7 @@ function getprogramme()
             if(datas.status)
             {
                 $(document).ready(function(){
+                    console.log(datas.data);
                     $('#programme_body').html(datas.data);
                 })
               
@@ -173,11 +174,6 @@ function AddProgramme()
         });
         
     }
-    $('document').ready(function () {
-        // $('#formedit').modal('hide');
-        $('#form').modal('toggle');
-        // alert("jooo");
-    });
     getprogramme();
     
    
@@ -240,9 +236,7 @@ function updatingprogramme()
         }
     });
     $('document').ready(function () {
-        // $('#formedit').modal('hide');
         $('#formedit').modal('toggle');
-        // alert("jooo");
     });
     getprogramme();
 }

@@ -18,7 +18,7 @@ class class_db{
         { $sql=$sql.' WHERE '.$where; }    
         if(isset($order_by) && $order_by !='')
         { $sql=$sql.' ORDER BY  '.$order_by; } 
-        // echo($sql);
+        // echo($sql); echo('</br>');
         $res=mysqli_query($connection,$sql);
         
         if($res){ 
