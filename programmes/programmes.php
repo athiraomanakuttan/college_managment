@@ -227,7 +227,7 @@
         </thead>
         <tbody id='programme_body' >
       </table> 
-      <p id="cc"></p>
+      <div id="pages" style="text-align:right"></div>
     </div>  
   </div>  
 </div>  
@@ -359,7 +359,7 @@
   </div>
 </div>
 <script>  
-$('table').DataTable();  
+// $('table').DataTable();  
 </script>  
     </section>
     <!-- /.content -->

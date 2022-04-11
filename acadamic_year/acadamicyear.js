@@ -1,62 +1,23 @@
-getacadamicyear();
-$(document).ready(function(){
-    acadamic_tab = $('#acadamic_tab').DataTable({
+getacadamicyear(1);
 
-        "datSrc": "data",
-        "columnDefs": [
-            { "orderable": false, "targets": [-1, -2] },
-            { "width": "20px", "targets": [-1, -2] }
-        ],
-        "columns": [
-            { "data": "acadamic_year_name" },
-            { "data": "indtsp" },
-            { "data": "indid" },
-            {
-                "data": null,
-                "render": function (obj) {
-                    return '<a id ="dele_sender_id_' + obj.indid + '" onclick="deleteIndustry(' + obj.indid + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>'
-                }
-
-            },
-            {
-                "data": null,
-                "render": function (obj) {
-                    if (obj.indstat == 2)
-                        return '<a id ="disable_sender_id_' + obj.indid + '" onclick="enableindustry(' + obj.indid + ')"><i class="fa fa-toggle-off" aria-hidden="true"></i></a>';
-                    else if (obj.indstat == 1)
-                        return '<a id ="enable_sender_id_' + obj.indid + '" onclick="disableindustry(' + obj.indid + ')"><i class="fa fa-toggle-on" aria-hidden="true"></i></a>';
-                    else if (obj.indstat == 6)
-                        return '<a id ="not_approved_sender_id_' + obj.indid + '"></i><i class="fa fa-pause" aria-hidden="true"></i></a>';
-                    else if (obj.indstat == 7)
-                        return '<a id ="rejected_sender_id_' + obj.indid + '"><i class="fa fa-ban" aria-hidden="true"></i></a>';
-                }
-            }
-        ]
-
-
-    });
-})
-    function getacadamicyear() {
+function getacadamicyear(page_number) {
      $('.hi').append('athira');
         $.ajax({
             type: "POST",
             url: "../api/rest.php",
-            data: { 'action': 'GetAcadamicYear' },
+            data: { 'action': 'GetAcadamicYear', 'page_no': page_number },
             dataType: "json",
             encode: true,
-        }).done(function (data) {
-            console.log("datasssss");
-            console.log(data);
-            return;
-            acadamic_tab.clear().draw();
-            acadamic_tab.rows.add(data).draw();
-            // if(datas.status)
-            // {
-            //     $(document).ready(function(){
-            //     $('#table_body').html(datas.data);
-            //     });
+        }).done(function (datas) {
+            console.log(datas);
+            if(datas.status)
+            {
+                $(document).ready(function(){
+                $('#table_body').html(datas.data);
+                $('#pages').html(datas.pagination);
+                });
                 
-            // }
+            }
         });
 }
 function AddAcadamicYear()

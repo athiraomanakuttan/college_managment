@@ -12,9 +12,10 @@ function getprogramme(page_number)
         {
             if(datas.status)
             {
+                console.log(datas);
                 $(document).ready(function(){
-                    console.log(datas.data);
                     $('#programme_body').html(datas.data);
+                    $('#pages').html(datas.pagination);
                 })
               
             }

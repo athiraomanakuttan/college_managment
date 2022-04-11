@@ -28,7 +28,7 @@ class class_programme
         {
             echo json_encode($ret); return $ret;
         }
-        $record_per_page=3; $page=0;
+        $record_per_page=10; $page=0;
         if(isset($_POST['page_no']))
         {
           $page=$_POST['page_no'];
@@ -63,7 +63,7 @@ class class_programme
             return $ret;
         }
         
-        $record_per_page=3; $page=0;
+        $record_per_page=10; $page=0;
         if(isset($_POST['page_no']))
         {
           $page=$_POST['page_no'];
@@ -111,43 +111,39 @@ class class_programme
           </tr> ';
         }
         $output=$output.'';
-    ///////////////////
-    $output=$output.'<tr style="text-align:right"><td colspan="6">';
-    $output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="1" onclick="load_data(1)">1</span>';
+        $pagination="";
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="1" onclick="getprogramme(1)">1</span>';
 
-if($page<5)
+if($page<3)
 {
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="2" onclick="getprogramme(2)">2</span>';
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="3" onclick="getprogramme(3)">3</span>';
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="4" onclick="getprogramme(4)">4</span>';
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="5" onclick="getprogramme(5)">5</span>';
-if($total_pages>5){
-    $output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="2" onclick="getprogramme(2)">2</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="3" onclick="getprogramme(3)">3</span>';
+if($total_pages>3){
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
 
 }
 }
-elseif($page-3>5 and $page+3<$total_pages)
+elseif($page-3>3 and $page+3<$total_pages)
 {
-
 for($i=$page-3;$i<=$page+3;$i++)
 {
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
 
 }
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
 }
 else
 {
  for($i=2;$i<=$total_pages;$i++)
 {
-$output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
 
 }
 }
 // $output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
-$output=$output.'</td></tr>';
+
     ///////////////////
-        $ret=array('status'=>TRUE,'data'=>$output);
+        $ret=array('status'=>TRUE,'data'=>$output,'pagination'=>$pagination);
         return  $ret;
     }
 
