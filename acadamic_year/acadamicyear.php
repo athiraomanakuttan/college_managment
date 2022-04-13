@@ -213,7 +213,22 @@
   
   
 <div class="container-fluid"> 
-  <h3>Academic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> <br>
+  <h3>Academic year <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getacadamicyear()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
+  <div class="container-fluid" >
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="col-4" style="border:2px solid black">
+        <div class="input-group" >
+  <div class="form-outline">
+    <input type="search" id="" class="form-control" />
+  </div>
+  <button type="button" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+      </div>
+    </div>
+  </div>
   <div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" id="acadamic_tab">  
