@@ -28,7 +28,7 @@ class class_programme
         {
             echo json_encode($ret); return $ret;
         }
-        $record_per_page=3; $page=0;
+        $record_per_page=4; $page=0;
         if(isset($_POST['page_no']))
         {
           $page=$_POST['page_no'];
@@ -209,6 +209,15 @@ public function updatingprogramme($CLGID,$data)
     }
     echo json_encode($ret);
     return $ret;
+}
+public function searchprogramme()
+{
+    $ret=array('status'=>FALSE,'message'=>'Error while searching data'); 
+    if($CLGID=='')
+    {
+        echo json_encode($ret); return $ret;
+    } 
+    $column_name=array("programme_name","programme_department","programme_type");
 }
 }
 ?>

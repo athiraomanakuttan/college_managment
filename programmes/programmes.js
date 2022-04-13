@@ -253,4 +253,28 @@ function validateprogramme()
     else{
         return true;
     }
+    function searchdata()
+    {
+        var search = $('#search').val();
+        $.ajax({
+            type: "POST",
+            url: '../api/process.php',
+            dataType: 'json',
+            data: { 
+                'action': 'searchprogramme',
+                'data': {
+                    search: $('#search').val(),
+                   
+                }
+            },
+            success: function (result) {
+                if (result.status) {
+                    alert("succesfully");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        });
+    }
 }

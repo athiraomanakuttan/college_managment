@@ -99,7 +99,12 @@ switch ($action) {
                     $course=new class_course();
                     $ret=$course->updatingCourse($CLGID,$data);
                     return $ret;
-                    break;             
+                    break;  
+         case 'searchprogramme':
+                    $course=new class_programme();
+                    $ret=$course->searchprogramme($CLGID,$data);
+                    return $ret;
+                    break;                         
         default :
             echo("invalid action");
             die();    

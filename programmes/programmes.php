@@ -209,8 +209,9 @@
       
 <body>  
   
-  
+
 <div class="container-fluid"> 
+<input class="form-control form-control-navbar" id="search" onkeyup="searchdata()" type="search" placeholder="Search" aria-label="Search">
   <h3>Programmes<i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getprogramme()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
   <div class="row" >  
     <div class="col-12">  
