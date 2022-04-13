@@ -1,15 +1,17 @@
-getdepartments(); 
-function getdepartments() {
+getdepartments(1); 
+function getdepartments(page_number) {
     $.ajax({
         type: "POST",
         url: "../api/rest.php",
-        data: { 'action': 'GetDepartment' },
+        data: { 'action': 'GetDepartment', 'page_no': page_number },
         dataType: "json",
         encode: true,
     }).done(function (datas) {
+        console.log(datas);
         if (datas.status) {
             $(document).ready(function () {
                 $('#table_body').html(datas.data);
+                $('#pages').html(datas.pagination);
             });
 
         }

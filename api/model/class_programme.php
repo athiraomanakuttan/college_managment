@@ -140,9 +140,7 @@ $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; pa
 
 }
 }
-// $output=$output.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
 
-    ///////////////////
         $ret=array('status'=>TRUE,'data'=>$output,'pagination'=>$pagination);
         return  $ret;
     }

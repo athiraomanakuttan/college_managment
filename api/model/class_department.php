@@ -27,9 +27,19 @@ class class_department
        echo json_encode($ret);
        return $ret;
      } 
+     $record_per_page=10; $page=0;
+        if(isset($_POST['page_no']))
+        {
+          $page=$_POST['page_no'];
+        }
+        else
+        {
+         $page=1;
+        }
+        $start_from=($page-1) * $record_per_page;
      $column_name='`department_id`,`department_name`,`department_nature`,`department_type`,`department_status`';
      $where='college_registration_id ='.$CLGID.' and department_status in(0,1)';
-     $order_by='department_id desc';
+     $order_by='department_id desc LIMIT '.$start_from.','.$record_per_page;
      $db = new class_db();
      $ret = $db->getList($this->__tablename,$column_name,$where,$order_by);
      if($ret['status'])
@@ -37,19 +47,35 @@ class class_department
        
        $displaydata=$ret['data']['rows'];
        $displaycount=$ret['data']['count'];
-      $ret=$this->display_list($displaydata,$displaycount);
+      $ret=$this->display_list($displaydata,$displaycount,$CLGID);
      }
      echo json_encode($ret);
      return $ret;
   
     }
-      public function display_list($data,$count)
+      public function display_list($data,$count,$CLGID)
     {
         $ret=array('status'=>FALSE,'message'=>'error while display data');
         if($data=='' || $count=='')
         {
             return $ret;
         }
+        $record_per_page=10; $page=0;
+        if(isset($_POST['page_no']))
+        {
+          $page=$_POST['page_no'];
+        }
+        else
+        {
+         $page=1;
+        }
+        $column_name='count(*) AS count';
+        $where='college_registration_id ='.$CLGID.' and department_status in(0,1)';
+        $order_by='department_id desc';
+        $db = new class_db();
+        $counted = $db->getList($this->__tablename,$column_name,$where,$order_by);
+        $total_record=$counted['data']['rows'][0]['count'];
+        $total_pages=ceil($total_record/$record_per_page);
         $output='';
         for($i=0; $i<$count; $i++)
         {
@@ -86,7 +112,36 @@ class class_department
             <th data-class="expand"><a id ="dele_department'.$data[$i]['department_id'].'" onclick="editdepartment('.$data[$i]['department_id'].')"><i class="fa-solid fa-pen-to-square"></i></a></th>  
           </tr> ';
         }
-        $ret=array('status'=>TRUE,'data'=>$output);
+        $pagination="";
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="1" onclick="getdepartments(1)">1</span>';
+
+if($page<3)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="2" onclick="getdepartments(2)">2</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="3" onclick="getdepartments(3)">3</span>';
+if($total_pages>3){
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getdepartments('.$total_pages.')">'.$total_pages.'</span>';
+
+}
+}
+elseif($page-3>3 and $page+3<$total_pages)
+{
+for($i=$page-3;$i<=$page+3;$i++)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getdepartments('.$i.')">'.$i.'</span>';
+
+}
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getdepartments('.$total_pages.')">'.$total_pages.'</span>';
+}
+else
+{
+ for($i=2;$i<=$total_pages;$i++)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getdepartments('.$i.')">'.$i.'</span>';
+
+}
+}
+        $ret=array('status'=>TRUE,'data'=>$output,'pagination'=>$pagination);
         return  $ret;
     }
     function changeStatus($UID,$data)

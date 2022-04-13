@@ -234,6 +234,7 @@
           
      </tfoot>  
       </table> 
+      <div id="pages" style="text-align:right"></div>
     </div>  
   </div>  
 </div>  
@@ -403,7 +404,7 @@
   </div>
 </div>
 <script>  
-$('table').DataTable();  
+// $('table').DataTable();  
 </script>  
     </section>
     <!-- /.content -->

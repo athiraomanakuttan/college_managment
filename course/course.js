@@ -1,16 +1,17 @@
-getcourse()
+getcourse(1)
 getdepartments();
-function getcourse() {
+function getcourse(page_number) {
     $.ajax({
         type: "POST",
         url: "../api/rest.php",
-        data: { 'action': 'getallcourse' },
+        data: { 'action': 'getallcourse', 'page_no': page_number },
         dataType: "json",
         encode: true,
         success: function (datas) {
             if (datas.status) {
                 $(document).ready(function () {
                     $('#table_body').html(datas.data);
+                    $('#pages').html(datas.pagination);
                 })
 
             }
