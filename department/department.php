@@ -212,7 +212,7 @@
   
 <div class="container-fluid"> 
   <h3>Departments <i class="fa-solid fa-rotate-right pr-3 pl-3 " onclick="getdepartments()"></i><i class="fa-solid fa-plus text-primary" data-target="#form" data-toggle="modal"></i></h3> 
-  <div class="row" >  
+  <br><div class="row" >  
     <div class="col-12">  
       <table class="table table-striped table-bordered table-hover" width="100%" class="table table-bordered table-hover dt-responsive" >  
         <thead class="bg-primary">  
@@ -232,6 +232,7 @@
           
      </tfoot>  
       </table> 
+      <div id="pages" style="text-align:right"></div>
     </div>  
   </div>  
 </div>  
@@ -367,7 +368,7 @@
   </div>
 </div>
 <script>  
-$('table').DataTable();  
+// $('table').DataTable();  
 </script>  
     </section>
     <!-- /.content -->

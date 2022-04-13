@@ -13,9 +13,19 @@ class class_course
      echo json_encode($ret);
      return $ret;
    } 
+   $record_per_page=10; $page=0;
+        if(isset($_POST['page_no']))
+        {
+          $page=$_POST['page_no'];
+        }
+        else
+        {
+         $page=1;
+        }
+        $start_from=($page-1) * $record_per_page;
    $column_name='department_name,courses.`college_registration_id`,`course_id`, `course_dep`, `course_category`, `course_execution`, `course_code`, `course_name` ,`status` ';
    $where='courses.college_registration_id ='.$CLGID.' and status in(0,1)';
-   $order_by='course_id desc';
+   $order_by='course_id desc LIMIT '.$start_from.','.$record_per_page;
    $table_name=$this->__tablename.' JOIN department on courses.course_dep= department.department_id';
    $db = new class_db();
    $ret = $db->getList($table_name,$column_name,$where,$order_by);
@@ -26,19 +36,35 @@ class class_course
      
      $displaydata=$ret['data']['rows'];
      $displaycount=$ret['data']['count'];
-    $ret=$this->display_list($displaydata,$displaycount);
+    $ret=$this->display_list($displaydata,$displaycount,$CLGID);
    }
    echo json_encode($ret);
    return $ret;
 
   }
-  public function display_list($data,$count)
+  public function display_list($data,$count,$CLGID)
   {
       $ret=array('status'=>FALSE,'message'=>'error while display data');
       if($data=='' || $count=='')
       {
           return $ret;
       }
+      $record_per_page=10; $page=0;
+        if(isset($_POST['page_no']))
+        {
+          $page=$_POST['page_no'];
+        }
+        else
+        {
+         $page=1;
+        }
+   $column_name='count(*) AS count';
+   $where='courses.college_registration_id ='.$CLGID.' and status in(0,1)';
+   $order_by='course_id desc ';
+   $db = new class_db();
+   $counted = $db->getList($this->__tablename,$column_name,$where,$order_by);
+   $total_record=$counted['data']['rows'][0]['count'];
+   $total_pages=ceil($total_record/$record_per_page);
       $output='';
       for($i=0; $i<$count; $i++)
       {
@@ -93,7 +119,36 @@ class class_course
           
         </tr> ';
       }
-      $ret=array('status'=>TRUE,'data'=>$output);
+      $pagination="";
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="1" onclick="getprogramme(1)">1</span>';
+
+if($page<3)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="2" onclick="getprogramme(2)">2</span>';
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="3" onclick="getprogramme(3)">3</span>';
+if($total_pages>3){
+    $pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
+
+}
+}
+elseif($page-3>3 and $page+3<$total_pages)
+{
+for($i=$page-3;$i<=$page+3;$i++)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
+
+}
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$total_pages.'" onclick="getprogramme('.$total_pages.')">'.$total_pages.'</span>';
+}
+else
+{
+ for($i=2;$i<=$total_pages;$i++)
+{
+$pagination=$pagination.'<span class="pagination_link" style="cursor:pointer; padding:6px;border:1px solid black;" id="'.$i.'" onclick="getprogramme('.$i.')">'.$i.'</span>';
+
+}
+}
+      $ret=array('status'=>TRUE,'data'=>$output,'pagination'=>$pagination);
       return  $ret;
   }
   public function AddCourse($UID,$CLGID,$data)
